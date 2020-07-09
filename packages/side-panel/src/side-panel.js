@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import useStyles from './styles';
@@ -28,7 +28,6 @@ const SidePanel = (props) => {
                 className={isMobile ? classes.drawerMobile : classes.drawer}
                 anchor='left'
                 open={open}
-                transitionDuration={0}
                 variant='persistent'
                 classes={{
                     paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
