@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Side Panel should render the side panel empty 1`] = `null`;
+
+exports[`Side Panel should render the side panel with a child 1`] = `null`;
