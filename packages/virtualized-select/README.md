@@ -1,13 +1,13 @@
-# @tractorzoom/side-panel
+# @tractorzoom/virtualized-select
 
-Side Panel Component
+Virtualized Select Component
 
-[Live Examples with Storybook](https://tractorzoom.github.io/component-library/?path=/story/side-panel)
+[Live Examples with Storybook](https://tractorzoom.github.io/component-library/?path=/story/virtualized-select)
 
 ## Install
 
 ```
-npm i --save @tractorzoom/side-panel
+npm i --save @tractorzoom/virtualized-select
 ```
 
 ## Contributing
