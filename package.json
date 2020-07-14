@@ -20,11 +20,13 @@
     ],
     "scripts": {
         "build-storybook": "build-storybook -s public",
+        "build": "npm run build-storybook",
         "commit": "git-cz",
         "deploy-storybook": "sh deploy-gh-pages",
         "prettier:all": "prettier --write './**/*.*'",
         "pretty-quick": "pretty-quick",
         "storybook": "start-storybook",
+        "start": "npm run storybook",
         "test": "jest"
     },
     "devDependencies": {
@@ -34,6 +36,7 @@
         "@commitlint/config-conventional": "8.3.4",
         "@material-ui/core": "4.11.0",
         "@material-ui/icons": "4.9.1",
+        "@material-ui/lab": "4.0.0-alpha.56",
         "@storybook/addon-a11y": "5.3.19",
         "@storybook/addon-actions": "5.3.19",
         "@storybook/addon-console": "1.2.1",
