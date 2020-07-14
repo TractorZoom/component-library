@@ -5,13 +5,13 @@ import renderer from 'react-test-renderer';
 describe('Virtualized Select', () => {
     it('should render empty', () => {
         // given
-        let options = [];
+        const options = [];
 
         // when
         const component = renderer.create(
             <VirtualizedSelect label='test' onChange={() => {}} selectedOption={''} options={options} />
         );
-        let tree = component.toJSON();
+        const tree = component.toJSON();
 
         // then
         expect(tree).toMatchSnapshot();
@@ -19,7 +19,7 @@ describe('Virtualized Select', () => {
 
     it('should render with 10000 items', () => {
         // given
-        let options = [];
+        const options = [];
         let index = 0;
 
         while (index < 10000) {
@@ -31,7 +31,7 @@ describe('Virtualized Select', () => {
         const component = renderer.create(
             <VirtualizedSelect label='test' onChange={() => {}} selectedOption={options[10]} options={options} />
         );
-        let tree = component.toJSON();
+        const tree = component.toJSON();
 
         // then
         expect(tree).toMatchSnapshot();
