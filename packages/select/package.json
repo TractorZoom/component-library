@@ -1,0 +1,39 @@
+{
+    "name": "@tractorzoom/select",
+    "version": "0.0.0",
+    "description": "Virtualized Select Component",
+    "author": "@TractorZoom",
+    "license": "MIT",
+    "main": "lib/index.js",
+    "engines": {
+        "node": "12.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TractorZoom/component-library.git"
+    },
+    "homepage": "https://github.com/TractorZoom/component-library/packages/select/README.md",
+    "bugs": {
+        "url": "https://github.com/TractorZoom/component-library/issues"
+    },
+    "keywords": [
+        "material-ui",
+        "virtualized select",
+        "react window select",
+        "select"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "../../node_modules/.bin/babel src --out-dir lib --copy-files",
+        "prepublish": "npm run build"
+    },
+    "peerDependencies": {
+        "@material-ui/core": "^4.11.0",
+        "@material-ui/lab": "^4.0.0-alpha.56"
+    },
+    "dependencies": {
+        "react-window": "1.8.5"
+    }
+}
