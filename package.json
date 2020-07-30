@@ -48,7 +48,7 @@
         "@testing-library/jest-dom": "5.11.2",
         "@testing-library/react": "10.4.7",
         "@tractorzoom/button": "0.3.0",
-        "@tractorzoom/chance-the-wrapper": "2.1.8",
+        "@tractorzoom/chance-the-wrapper": "2.1.9",
         "babel-jest": "26.2.1",
         "babel-loader": "8.1.0",
         "commitizen": "4.1.2",
