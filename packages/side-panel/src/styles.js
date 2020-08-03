@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         background: '#6c757d',
         display: 'flex',
+        flexShrink: 0,
         padding: theme.spacing(0, 1),
         position: 'sticky',
         justifyContent: 'flex-end',
