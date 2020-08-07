@@ -31,6 +31,7 @@ const Select = (props) => {
             disableListWrap
             classes={classes}
             ListboxComponent={Listbox}
+            ListboxProps={props}
             options={options}
             renderInput={(params) => (
                 <TextField

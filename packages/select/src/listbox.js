@@ -40,6 +40,12 @@ const ListboxComponent = forwardRef(function ListboxComponent(props, ref) {
     const itemCount = itemData.length;
     const itemSize = 40;
 
+    let initialScrollOffset = 0;
+
+    if (props.selectedOption) {
+        initialScrollOffset = props.options.indexOf(props.selectedOption) * itemSize;
+    }
+
     const gridRef = useResetCache(itemCount);
 
     return (
@@ -51,6 +57,7 @@ const ListboxComponent = forwardRef(function ListboxComponent(props, ref) {
                     width='100%'
                     ref={gridRef}
                     outerElementType={OuterElementType}
+                    initialScrollOffset={initialScrollOffset}
                     innerElementType='ul'
                     itemSize={() => itemSize}
                     overscanCount={5}
