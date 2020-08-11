@@ -2,6 +2,7 @@
 
 | value          | required | description                                                                  |
 | -------------- | -------- | ---------------------------------------------------------------------------- |
+| dataCy         | no       | string added as the data-cy attribute on the input element                   |
 | darkMode       | no       | boolean to indicate if styling should be inverted to be on a dark background |
 | error          | no       | boolean value to indicate if text field should denote errored                |
 | helperText     | no       | string value of helper text displayed below select                           |

@@ -46,6 +46,7 @@ const Select = (props) => {
                             ...params.InputProps.classes,
                             notchedOutline: textFieldClasses.notchedOutline,
                         },
+                        'data-cy': props.dataCy,
                     }}
                     size='small'
                     variant='outlined'
@@ -66,6 +67,7 @@ Select.defaultProps = {
     darkMode: false,
     error: false,
     helperText: '',
+    dataCy: undefined,
     renderOption: (option) => <Typography noWrap>{option}</Typography>,
     required: false,
 };
@@ -75,6 +77,7 @@ Select.propTypes = {
     darkMode: PropTypes.bool,
     error: PropTypes.bool,
     helperText: PropTypes.string,
+    dataCy: PropTypes.string,
     label: PropTypes.string.isRequired,
     options: PropTypes.array.isRequired,
     renderOption: PropTypes.func,
