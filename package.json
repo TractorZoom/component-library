@@ -45,7 +45,7 @@
         "@storybook/addon-storysource": "5.3.19",
         "@storybook/addon-viewport": "5.3.19",
         "@storybook/react": "5.3.19",
-        "@testing-library/jest-dom": "5.11.2",
+        "@testing-library/jest-dom": "5.11.3",
         "@testing-library/react": "10.4.8",
         "@tractorzoom/button": "0.3.0",
         "@tractorzoom/chance-the-wrapper": "2.1.12",
