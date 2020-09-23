@@ -17,7 +17,7 @@ const BasicDialog = (props) => {
             fullScreen={isMobile}
             open={props.isOpen}
             onClose={props.close}
-            PaperProps={{ className: classes.container }}
+            PaperProps={{ className: classes.container, 'data-tour': props.dataTour }}
         >
             <DialogTitle className={classes.titleContainer} disableTypography>
                 <Typography variant='h5'>{props.title}</Typography>
@@ -30,6 +30,7 @@ const BasicDialog = (props) => {
 
 BasicDialog.defaultProps = {
     actionButtons: [],
+    dataTour: '',
     isOpen: false,
 };
 
@@ -37,6 +38,7 @@ BasicDialog.propTypes = {
     actionButtons: PropTypes.array,
     children: PropTypes.node,
     close: PropTypes.func.isRequired,
+    dataTour: PropTypes.string,
     isOpen: PropTypes.bool,
     title: PropTypes.string.isRequired,
 };

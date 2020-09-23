@@ -7,6 +7,7 @@ describe('Basic Dialog', () => {
         // given
         const mockData = {
             close: jest.fn(),
+            dataTour: 'data-tour',
             isOpen: false,
             title: 'some dialog title',
         };
