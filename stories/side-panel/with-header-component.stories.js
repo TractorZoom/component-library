@@ -4,6 +4,7 @@ import React from 'react';
 import propsMarkdown from '../utilities/props/side-panel.md';
 import { makeStyles } from '@material-ui/core/styles';
 import { storiesOf } from '@storybook/react';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({

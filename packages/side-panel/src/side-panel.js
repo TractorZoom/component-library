@@ -10,6 +10,7 @@ import withWidth from '@material-ui/core/withWidth';
 
 const darkTheme = createMuiTheme({
     palette: {
+        background: { default: '#31435a', paper: '#31435a' },
         type: 'dark',
     },
 });
