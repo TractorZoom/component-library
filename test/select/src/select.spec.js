@@ -84,4 +84,18 @@ describe('Select', () => {
         // then
         expect(tree).toMatchSnapshot();
     });
+
+    it('should render with add new option', () => {
+        // given
+        const options = [];
+
+        // when
+        const component = renderer.create(
+            <Select label='test' onChange={() => {}} onAddNew={() => {}} selectedOption={''} options={options} />
+        );
+        const tree = component.toJSON();
+
+        // then
+        expect(tree).toMatchSnapshot();
+    });
 });
