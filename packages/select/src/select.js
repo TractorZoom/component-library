@@ -78,7 +78,7 @@ const Select = (props) => {
             value={selectedOption}
             {...otherProps}
             onChange={(event, newValue) => {
-                const newValueTitle = typeof newValue === 'string' ? newValue : newValue.label ? newValue.label : '';
+                const newValueTitle = typeof newValue === 'string' ? newValue : newValue?.label ? newValue.label : '';
 
                 if (newValueTitle.includes('+ Add')) {
                     props.onAddNew(newValueTitle.replace('+ Add ', ''));
