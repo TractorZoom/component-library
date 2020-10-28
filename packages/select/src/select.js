@@ -37,7 +37,7 @@ const Select = (props) => {
             filterOptions={(options, params) => {
                 const filtered = filter(options, params);
 
-                if (params.inputValue !== '' && props.onAddNew) {
+                if (params.inputValue !== '' && props.onAddNew && filtered.length === 0) {
                     const addNewOption = {
                         inputValue: params.inputValue,
                         label: `+ Add ${params.inputValue}`,
