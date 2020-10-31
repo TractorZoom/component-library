@@ -60,7 +60,7 @@
         "react": "16.14.0",
         "react-dom": "16.14.0",
         "react-test-renderer": "16.14.0",
-        "storybook-host": "5.1.0"
+        "storybook-host": "5.2.0"
     },
     "config": {
         "commitizen": {
