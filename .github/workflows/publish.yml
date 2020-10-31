@@ -55,7 +55,7 @@ jobs:
                   args: 'bootstrap'
             - run: npm run build-storybook
             - name: 'Deploy to GitHub Pages'
-              uses: crazy-max/ghaction-github-pages@v1
+              uses: crazy-max/ghaction-github-pages@v2
               with:
                   target_branch: gh-pages
                   build_dir: storybook-static
