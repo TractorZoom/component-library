@@ -14,6 +14,7 @@ const PlacesSelect = (props) => {
     const { address, setAddress } = props;
 
     const {
+        clearSuggestions,
         suggestions: { status, data },
         setValue,
     } = usePlacesAutocomplete({ debounce: 300 });
@@ -63,6 +64,7 @@ const PlacesSelect = (props) => {
         }
 
         setAddress(address);
+        clearSuggestions();
     };
 
     return (
