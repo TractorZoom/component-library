@@ -1,0 +1,41 @@
+{
+    "name": "@tractorzoom/places-select",
+    "version": "0.24.0",
+    "description": "Places Select Component",
+    "author": "@TractorZoom",
+    "license": "MIT",
+    "main": "lib/index.js",
+    "engines": {
+        "node": "12.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TractorZoom/component-library.git"
+    },
+    "homepage": "https://github.com/TractorZoom/component-library/packages/places-select/README.md",
+    "bugs": {
+        "url": "https://github.com/TractorZoom/component-library/issues"
+    },
+    "keywords": [
+        "material-ui",
+        "places select",
+        "google maps autocomplete",
+        "google places autocomplete",
+        "select"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "../../node_modules/.bin/babel src --out-dir lib --copy-files",
+        "prepublish": "npm run build"
+    },
+    "peerDependencies": {
+        "@material-ui/core": "^4.11.0",
+        "@material-ui/lab": "^4.0.0-alpha.56"
+    },
+    "dependencies": {
+        "autosuggest-highlight": "3.1.1",
+        "use-places-autocomplete": "1.6.0"
+    }
+}
