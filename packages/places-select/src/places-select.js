@@ -71,15 +71,28 @@ const PlacesSelect = (props) => {
         <Autocomplete
             getOptionLabel={(option) => (typeof option === 'string' ? option : option.description)}
             filterOptions={(x) => x}
-            options={status === 'OK' ? data : []}
+            options={status === 'OK' ? [...data, { addPoweredByGoogle: true }] : []}
             autoComplete
             includeInputInList
             filterSelectedOptions
-            value={address.fullAddress}
+            value={address?.fullAddress}
             onChange={handleSelect}
             onInputChange={handleInput}
             renderInput={(params) => <TextField {...params} label='Location' variant='outlined' fullWidth />}
             renderOption={(option) => {
+                if (option.addPoweredByGoogle) {
+                    return (
+                        <Grid key='poweredByGoogle' container justify='flex-end'>
+                            <Grid item>
+                                <img
+                                    src='https://developers.google.com/maps/documentation/images/powered_by_google_on_white.png'
+                                    alt='Powered by Google'
+                                />
+                            </Grid>
+                        </Grid>
+                    );
+                }
+
                 const matches = option.structured_formatting.main_text_matched_substrings;
                 const parts = parse(
                     option.structured_formatting.main_text,
