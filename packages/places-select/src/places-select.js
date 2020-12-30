@@ -69,6 +69,7 @@ const PlacesSelect = (props) => {
 
     return (
         <Autocomplete
+            {...props}
             getOptionLabel={(option) => (typeof option === 'string' ? option : option.description)}
             filterOptions={(x) => x}
             options={status === 'OK' ? [...data, { addPoweredByGoogle: true }] : []}
