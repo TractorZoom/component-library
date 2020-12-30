@@ -69,7 +69,7 @@ const PlacesSelect = (props) => {
 
     return (
         <Autocomplete
-            {...props}
+            className={props.className}
             getOptionLabel={(option) => (typeof option === 'string' ? option : option.description)}
             filterOptions={(x) => x}
             options={status === 'OK' ? [...data, { addPoweredByGoogle: true }] : []}
@@ -79,7 +79,7 @@ const PlacesSelect = (props) => {
             value={address?.fullAddress}
             onChange={handleSelect}
             onInputChange={handleInput}
-            renderInput={(params) => <TextField {...params} label='Location' variant='outlined' fullWidth />}
+            renderInput={(params) => <TextField {...params} {...props} label='Location' variant='outlined' fullWidth />}
             renderOption={(option) => {
                 if (option.addPoweredByGoogle) {
                     return (

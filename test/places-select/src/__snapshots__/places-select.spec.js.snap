@@ -9,10 +9,10 @@ exports[`PlacesSelect should render without suggestions 1`] = `
   onKeyDown={[Function]}
   onMouseDown={[Function]}
   role="combobox"
-  setAddress={[MockFunction]}
 >
   <div
     className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    setAddress={[MockFunction]}
   >
     <label
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
