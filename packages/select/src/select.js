@@ -37,7 +37,8 @@ const Select = (props) => {
     const classes = useStyles();
 
     const hasStringOptions = options && typeof options[0] === 'string';
-    const matchOptions = hasStringOptions ? undefined : { keys: props.filterKeys };
+    const baseSort = props.useOriginalSortOrder ? (a, b) => (a.index < b.index ? -1 : 1) : undefined;
+    const matchOptions = hasStringOptions ? undefined : { keys: props.filterKeys, baseSort };
 
     const getOptionLabel = hasStringOptions ? getStringOptionLabel : getObjectOptionLabel;
     const defaultRenderOption = hasStringOptions ? renderStringOption : renderObjectOption;
