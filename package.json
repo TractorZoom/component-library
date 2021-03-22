@@ -42,7 +42,7 @@
         "@tractorzoom/chance-the-wrapper": "2.1.68",
         "babel-jest": "26.6.1",
         "babel-loader": "8.2.2",
-        "commitizen": "4.2.2",
+        "commitizen": "4.2.3",
         "husky": "4.3.0",
         "jest": "26.6.1",
         "lerna": "3.22.1",
