@@ -34,7 +34,7 @@
         "@material-ui/lab": "^4.0.0-alpha.56"
     },
     "dependencies": {
-        "react-virtualized-auto-sizer": "1.0.2",
+        "react-virtualized-auto-sizer": "1.0.5",
         "react-window": "1.8.6"
     }
 }
