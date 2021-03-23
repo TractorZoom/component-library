@@ -34,7 +34,7 @@
         "@material-ui/lab": "^4.0.0-alpha.56"
     },
     "dependencies": {
-        "match-sorter": "6.2.0",
+        "match-sorter": "6.3.0",
         "react-window": "1.8.6"
     }
 }
