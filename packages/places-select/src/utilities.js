@@ -1,3 +1,5 @@
+import { getGeocode, getLatLng } from 'use-places-autocomplete';
+
 export const getFullAddressString = (addressObject) => {
     let fullAddress = '';
 
@@ -26,4 +28,12 @@ export const getFullAddressString = (addressObject) => {
     fullAddress = fullAddress.replace(/(^,)|(,$)/g, '');
 
     return fullAddress;
+};
+
+export const getLatLon = async (address) => {
+    const geocodedAddress = await getGeocode({ address });
+
+    const { lat, lng: lon } = await getLatLng(geocodedAddress[0]);
+
+    return { lat, lon };
 };
