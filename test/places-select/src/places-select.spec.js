@@ -1,4 +1,4 @@
-import PlacesSelect from '../../../packages/places-select/src';
+import { PlacesSelect } from '../../../packages/places-select/src';
 import React from 'react';
 import renderer from 'react-test-renderer';
 

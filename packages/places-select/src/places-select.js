@@ -12,7 +12,7 @@ import clsx from 'clsx';
 import parse from 'autosuggest-highlight/parse';
 import useStyles from './styles';
 
-const PlacesSelect = (props) => {
+export const PlacesSelect = (props) => {
     const classes = useStyles();
     const { address, setAddress, InputLabelProps, InputProps, ...otherProps } = props;
 
@@ -205,5 +205,3 @@ PlacesSelect.propTypes = {
     setAddress: PropTypes.func.isRequired,
     variant: PropTypes.string,
 };
-
-export default PlacesSelect;
