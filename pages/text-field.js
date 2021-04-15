@@ -28,7 +28,6 @@ const TextFieldExamples = () => {
             </Typography>
             <TextField
                 helperText='Enabled'
-                label='Input Label'
                 onChange={onChange(setWithLabelValue)}
                 style={{ marginTop: 20 }}
                 value={withLabelValue}
