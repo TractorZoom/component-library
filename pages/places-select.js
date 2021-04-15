@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { PlacesSelect } from '../packages/places-select/src/index';
 import Typography from '@material-ui/core/Typography';
 
-console.log('PlacesSelect: ', PlacesSelect);
-
 const PlacesSelectExamples = () => {
     const [withAddress, setWithAddress] = useState({});
 
