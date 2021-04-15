@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PlacesSelect from '../packages/places-select/src/index';
+import { PlacesSelect } from '../packages/places-select/src/index';
 import Typography from '@material-ui/core/Typography';
 
 const PlacesSelectExamples = () => {
