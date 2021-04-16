@@ -39,7 +39,10 @@ const useSimpleSelect = (props) => {
 
     const updatedInputProps = {
         ...InputProps,
-        className: InputProps.className ? clsx(classes.input, InputProps.className) : classes.input,
+        className: clsx(classes.input, {
+            [classes.noLabel]: !props.label,
+            [InputProps.className]: InputProps.className,
+        }),
         classes: {
             error: classes.error,
             focused: classes.focused,

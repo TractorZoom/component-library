@@ -29,8 +29,7 @@ const SimpleSelectExamples = () => {
                 @tractorzoom/simple-select
             </Typography>
             <SimpleSelect
-                helperText='String Options'
-                label='Select String Option'
+                helperText='No Label'
                 options={stringOptions}
                 onChange={onChange(setWithStringOptionsValue)}
                 style={{ marginTop: 20 }}

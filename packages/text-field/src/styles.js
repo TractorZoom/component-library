@@ -28,11 +28,6 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: 'rgba(0, 0, 0, 0.08) !important',
         },
     },
-    noLabel: {
-        '& input': {
-            padding: '12px 12px 10px',
-        },
-    },
     optionsSelect: {
         width: 74,
     },

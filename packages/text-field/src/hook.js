@@ -63,7 +63,6 @@ const useTextField = (props) => {
         className: clsx(classes.input, {
             [classes.optionsInput]: suffixOptions.length,
             [InputProps.className]: Boolean(InputProps.className),
-            [classes.noLabel]: !props.label,
         }),
         classes: {
             adornedEnd: classes.adornedEnd,
