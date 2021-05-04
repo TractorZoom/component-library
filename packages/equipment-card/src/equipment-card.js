@@ -79,13 +79,14 @@ const EquipmentCard = (props) => {
                         {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
                     </Typography>
                     <div className={classes.details}>
-                        <Typography
-                            className={classes.variableDetail}
-                            data-cy='equipment-card-variable-detail'
-                            style={variableDetailStyle}
-                        >
-                            {variableDetail}
-                        </Typography>
+                        <div data-cy='equipment-card-variable-detail'>
+                            {variableDetail.split('/').map((detail) => (
+                                <Typography className={classes.variableDetail} style={variableDetailStyle}>
+                                    {detail}
+                                </Typography>
+                            ))}
+                        </div>
+
                         <Typography className={classes.price} data-cy='equipment-card-price'>
                             {`$${formatNumberWithThousandSeparator(`${props.price}`)}`}
                         </Typography>
