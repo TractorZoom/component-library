@@ -12,6 +12,9 @@ export default makeStyles((theme) => ({
         padding: theme.spacing(5),
         paddingBottom: theme.spacing(2),
     },
+    cardHolder: {
+        position: 'relative',
+    },
     checkedButton: {
         ...iconButton(theme),
         '&:hover': {

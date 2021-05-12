@@ -29,19 +29,69 @@ const EquipmentCard = (props) => {
     };
 
     return (
-        <Card
-            className={clsx(classes.root, {
-                [classes.selectedCard]: isSelected,
-            })}
-            data-cy='equipment-card'
-            data-guid={props.id}
-            style={props.style}
-            variant='outlined'
-        >
-            <CardActionArea
-                data-tour={props.shouldHaveDataTour ? 'equipment-card-action-area' : ''}
-                onClick={props.handleOpen}
+        <div className={classes.cardHolder}>
+            <Card
+                className={clsx(classes.root, {
+                    [classes.selectedCard]: isSelected,
+                })}
+                data-cy='equipment-card'
+                data-guid={props.id}
+                style={props.style}
+                variant='outlined'
             >
+                <CardActionArea
+                    data-tour={props.shouldHaveDataTour ? 'equipment-card-action-area' : ''}
+                    onClick={props.handleOpen}
+                >
+                    <CardMedia
+                        className={classes.media}
+                        component='img'
+                        data-cy='equipment-card-image'
+                        onError={(e) => {
+                            e.target.onerror = null;
+
+                            if (e.target.src === props.makeImageUrl || !props.makeImageUrl) {
+                                e.target.src = '/img/nopicture.png';
+                            } else {
+                                e.target.src = props.makeImageUrl;
+                            }
+                        }}
+                        src={props.imageUrl}
+                        title='Equipment Image'
+                    />
+                    <CardContent classes={{ root: classes.cardContent }}>
+                        <Typography
+                            className={classes.makeModelTitle}
+                            component='h2'
+                            data-cy='equipment-card-make-model'
+                            variant='h5'
+                        >
+                            {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
+                        </Typography>
+                        <div className={classes.details}>
+                            <Typography
+                                className={classes.variableDetail}
+                                data-cy='equipment-card-variable-detail'
+                                style={variableDetailStyle}
+                            >
+                                {variableDetail}
+                            </Typography>
+                            <Typography className={classes.price} data-cy='equipment-card-price'>
+                                {`$${formatNumberWithThousandSeparator(`${props.price}`)}`}
+                            </Typography>
+                        </div>
+                        <Divider />
+                        <div className={classes.locationAndSaleDate}>
+                            <Typography className={classes.detailsText} data-cy='equipment-card-location'>
+                                <LocationOnIcon style={{ height: 16, marginBottom: -2, width: 16 }} />
+                                {getLocation(props)}
+                            </Typography>
+                            <Typography className={classes.detailsText} data-cy='equipment-card-sale-date'>
+                                Sold {formattedDate}
+                            </Typography>
+                        </div>
+                    </CardContent>
+                </CardActionArea>
                 <IconButton
                     aria-label='select equipment'
                     className={isSelected ? classes.checkedButton : classes.selectButton}
@@ -53,56 +103,8 @@ const EquipmentCard = (props) => {
                 >
                     {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
                 </IconButton>
-                <CardMedia
-                    className={classes.media}
-                    component='img'
-                    data-cy='equipment-card-image'
-                    onError={(e) => {
-                        e.target.onerror = null;
-
-                        if (e.target.src === props.makeImageUrl || !props.makeImageUrl) {
-                            e.target.src = '/img/nopicture.png';
-                        } else {
-                            e.target.src = props.makeImageUrl;
-                        }
-                    }}
-                    src={props.imageUrl}
-                    title='Equipment Image'
-                />
-                <CardContent classes={{ root: classes.cardContent }}>
-                    <Typography
-                        className={classes.makeModelTitle}
-                        component='h2'
-                        data-cy='equipment-card-make-model'
-                        variant='h5'
-                    >
-                        {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
-                    </Typography>
-                    <div className={classes.details}>
-                        <Typography
-                            className={classes.variableDetail}
-                            data-cy='equipment-card-variable-detail'
-                            style={variableDetailStyle}
-                        >
-                            {variableDetail}
-                        </Typography>
-                        <Typography className={classes.price} data-cy='equipment-card-price'>
-                            {`$${formatNumberWithThousandSeparator(`${props.price}`)}`}
-                        </Typography>
-                    </div>
-                    <Divider />
-                    <div className={classes.locationAndSaleDate}>
-                        <Typography className={classes.detailsText} data-cy='equipment-card-location'>
-                            <LocationOnIcon style={{ height: 16, marginBottom: -2, width: 16 }} />
-                            {getLocation(props)}
-                        </Typography>
-                        <Typography className={classes.detailsText} data-cy='equipment-card-sale-date'>
-                            Sold {formattedDate}
-                        </Typography>
-                    </div>
-                </CardContent>
-            </CardActionArea>
-        </Card>
+            </Card>
+        </div>
     );
 };
 
