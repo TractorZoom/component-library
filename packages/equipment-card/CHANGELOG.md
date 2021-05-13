@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.1.2...@tractorzoom/equipment-card@1.2.0) (2021-05-13)
+
+
+### Features
+
+* move the click target to the circle only ([09aac33](https://github.com/TractorZoom/component-library/commit/09aac3357a9bc0e930c5bced30efb4fe48b9a139))
+
+
+
+
+
 ## [1.1.2](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.1.1...@tractorzoom/equipment-card@1.1.2) (2021-05-03)
 
 
