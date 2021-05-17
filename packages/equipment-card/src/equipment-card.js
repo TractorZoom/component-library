@@ -22,6 +22,8 @@ const EquipmentCard = (props) => {
     const isSelected = props.selectedEquipmentSet.has(props.id);
     const variableDetail = getVariableDetail(props);
     const variableDetailStyle = variableDetail.length >= 18 ? { fontSize: 14 } : {};
+    const circleSelectable = !props.handleEquipmentSelected ? { visibility: 'hidden' } : { 'pointer-events': 'all' };
+    !props.handleOpen ? (props.style['pointer-events'] = 'none') : '';
 
     const handleToggleSelected = (event) => {
         props.handleEquipmentSelected();
@@ -99,6 +101,7 @@ const EquipmentCard = (props) => {
                     data-cy='equipment-card-toggle-selection-button'
                     data-tour={props.shouldHaveDataTour ? 'equipment-card-select-equipment' : ''}
                     onClick={handleToggleSelected}
+                    style={circleSelectable}
                     title={isSelected ? 'Remove from custom average' : 'Add to custom average'}
                 >
                     {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
@@ -120,8 +123,8 @@ EquipmentCard.defaultProps = {
 EquipmentCard.propTypes = {
     auctionDate: PropTypes.string,
     distance: PropTypes.number,
-    handleOpen: PropTypes.func.isRequired,
-    handleEquipmentSelected: PropTypes.func.isRequired,
+    handleOpen: PropTypes.func,
+    handleEquipmentSelected: PropTypes.func,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     imageUrl: PropTypes.string.isRequired,
     make: PropTypes.string.isRequired,
