@@ -204,7 +204,7 @@ const EquipmentCardExamples = () => {
                 {LIST_OF_EQUIPMENT.map((equipment) => (
                     <EquipmentCard
                         handleEquipmentSelected={handleEquipmentSelected(equipment)}
-                        handleOpen={null}
+                        handleOpen={handleOpen(equipment)}
                         key={equipment.id}
                         selectedEquipmentSet={selectedEquipmentSet}
                         style={{ margin: 5, maxWidth: 300 }}
