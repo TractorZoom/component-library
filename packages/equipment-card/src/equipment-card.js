@@ -22,9 +22,9 @@ const EquipmentCard = (props) => {
     const isSelected = props.selectedEquipmentSet.has(props.id);
     const variableDetail = getVariableDetail(props);
     const variableDetailStyle = variableDetail.length >= 18 ? { fontSize: 14 } : {};
-    const circleSelectable = !props.handleEquipmentSelected ? { visibility: 'hidden' } : { 'pointer-events': 'all' };
-    !props.handleOpen ? (props.style['pointer-events'] = 'none') : '';
-
+    if (!props.handleOpen) {
+        props.style['pointer-events'] = 'none';
+    }
     const handleToggleSelected = (event) => {
         props.handleEquipmentSelected();
         event.stopPropagation();
@@ -94,18 +94,19 @@ const EquipmentCard = (props) => {
                         </div>
                     </CardContent>
                 </CardActionArea>
-                <IconButton
-                    aria-label='select equipment'
-                    className={isSelected ? classes.checkedButton : classes.selectButton}
-                    color='primary'
-                    data-cy='equipment-card-toggle-selection-button'
-                    data-tour={props.shouldHaveDataTour ? 'equipment-card-select-equipment' : ''}
-                    onClick={handleToggleSelected}
-                    style={circleSelectable}
-                    title={isSelected ? 'Remove from custom average' : 'Add to custom average'}
-                >
-                    {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
-                </IconButton>
+                {!!props.handleEquipmentSelected && (
+                    <IconButton
+                        aria-label='select equipment'
+                        className={isSelected ? classes.checkedButton : classes.selectButton}
+                        color='primary'
+                        data-cy='equipment-card-toggle-selection-button'
+                        data-tour={props.shouldHaveDataTour ? 'equipment-card-select-equipment' : ''}
+                        onClick={handleToggleSelected}
+                        title={isSelected ? 'Remove from custom average' : 'Add to custom average'}
+                    >
+                        {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
+                    </IconButton>
+                )}
             </Card>
         </div>
     );
