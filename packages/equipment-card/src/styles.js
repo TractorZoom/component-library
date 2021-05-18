@@ -22,6 +22,7 @@ export default makeStyles((theme) => ({
         },
         backgroundColor: theme.palette.success.main,
         color: theme.palette.common.white,
+        'pointer-events': 'all',
     },
     details: {
         alignItems: 'center',
@@ -69,6 +70,7 @@ export default makeStyles((theme) => ({
         },
         backgroundColor: theme.palette.common.white,
         border: '2px solid rgba(0, 0, 0, 0.12)',
+        'pointer-events': 'all',
     },
     selectedCard: {
         border: `3px solid ${theme.palette.success.main}`,
