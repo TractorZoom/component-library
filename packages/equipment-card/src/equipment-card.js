@@ -19,13 +19,31 @@ const EquipmentCard = (props) => {
     const classes = useStyles();
     const saleDate = props.saleDate ? props.saleDate : props.auctionDate;
     const formattedDate = DateTime.fromISO(saleDate).toLocaleString();
+    const formattedPrice = `$${formatNumberWithThousandSeparator(`${props.price}`)}`;
     const isSelected = props.selectedEquipmentSet.has(props.id);
     const variableDetail = getVariableDetail(props);
     const variableDetailStyle = variableDetail.length >= 18 ? { fontSize: 14 } : {};
-
+    if (!props.handleOpen) {
+        props.style['pointer-events'] = 'none';
+    }
     const handleToggleSelected = (event) => {
         props.handleEquipmentSelected();
         event.stopPropagation();
+    };
+    const formatLongVariableDetails = (variableDetail) => {
+        return variableDetail.split('/').map((detail) => (
+            <Typography className={classes.variableDetail} style={variableDetailStyle}>
+                {detail}
+            </Typography>
+        ));
+    };
+    const formatShortVariableDetails = (variableDetail) => {
+        console.log(variableDetail.length + formattedPrice.length);
+        return (
+            <Typography className={classes.variableDetail} style={variableDetailStyle}>
+                {variableDetail}
+            </Typography>
+        );
     };
 
     return (
@@ -69,15 +87,13 @@ const EquipmentCard = (props) => {
                             {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
                         </Typography>
                         <div className={classes.details}>
-                            <Typography
-                                className={classes.variableDetail}
-                                data-cy='equipment-card-variable-detail'
-                                style={variableDetailStyle}
-                            >
-                                {variableDetail}
-                            </Typography>
+                            <div data-cy='equipment-card-variable-detail'>
+                                {variableDetail.length + formattedPrice.length < 33
+                                    ? formatShortVariableDetails(variableDetail)
+                                    : formatLongVariableDetails(variableDetail)}
+                            </div>
                             <Typography className={classes.price} data-cy='equipment-card-price'>
-                                {`$${formatNumberWithThousandSeparator(`${props.price}`)}`}
+                                {formattedPrice}
                             </Typography>
                         </div>
                         <Divider />
@@ -92,17 +108,19 @@ const EquipmentCard = (props) => {
                         </div>
                     </CardContent>
                 </CardActionArea>
-                <IconButton
-                    aria-label='select equipment'
-                    className={isSelected ? classes.checkedButton : classes.selectButton}
-                    color='primary'
-                    data-cy='equipment-card-toggle-selection-button'
-                    data-tour={props.shouldHaveDataTour ? 'equipment-card-select-equipment' : ''}
-                    onClick={handleToggleSelected}
-                    title={isSelected ? 'Remove from custom average' : 'Add to custom average'}
-                >
-                    {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
-                </IconButton>
+                {!!props.handleEquipmentSelected && (
+                    <IconButton
+                        aria-label='select equipment'
+                        className={isSelected ? classes.checkedButton : classes.selectButton}
+                        color='primary'
+                        data-cy='equipment-card-toggle-selection-button'
+                        data-tour={props.shouldHaveDataTour ? 'equipment-card-select-equipment' : ''}
+                        onClick={handleToggleSelected}
+                        title={isSelected ? 'Remove from custom average' : 'Add to custom average'}
+                    >
+                        {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
+                    </IconButton>
+                )}
             </Card>
         </div>
     );
@@ -120,8 +138,8 @@ EquipmentCard.defaultProps = {
 EquipmentCard.propTypes = {
     auctionDate: PropTypes.string,
     distance: PropTypes.number,
-    handleOpen: PropTypes.func.isRequired,
-    handleEquipmentSelected: PropTypes.func.isRequired,
+    handleOpen: PropTypes.func,
+    handleEquipmentSelected: PropTypes.func,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     imageUrl: PropTypes.string.isRequired,
     make: PropTypes.string.isRequired,
