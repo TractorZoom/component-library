@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.2.0...@tractorzoom/equipment-card@1.3.0) (2021-05-18)
+
+
+### Features
+
+* removes hover if card has no onclick function ([26d6819](https://github.com/TractorZoom/component-library/commit/26d6819c23e40cfb139365a0a3f769055885f1e6))
+* stop render of select button if unused ([1270015](https://github.com/TractorZoom/component-library/commit/1270015baa65be476135e63f752e3ffa28ccdefa))
+
+
+
+
+
 # [1.2.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.1.2...@tractorzoom/equipment-card@1.2.0) (2021-05-13)
 
 
