@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.3.0...@tractorzoom/equipment-card@1.4.0) (2021-05-21)
+
+
+### Features
+
+* break line at / if important feat line too long ([b8b718e](https://github.com/TractorZoom/component-library/commit/b8b718e72e8ce8286a684db128da567bf426b9ef))
+* wrap text if width greater than 220 pixels ([81746b3](https://github.com/TractorZoom/component-library/commit/81746b38cb2bed5c369d73505e74fbc41b5e9246))
+
+
+
+
+
 # [1.3.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.2.0...@tractorzoom/equipment-card@1.3.0) (2021-05-18)
 
 
