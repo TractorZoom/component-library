@@ -10,15 +10,17 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import useStyles from './styles';
 
 const EquipmentCard = (props) => {
+    const canvasRef = useRef(null);
     const classes = useStyles();
     const saleDate = props.saleDate ? props.saleDate : props.auctionDate;
     const formattedDate = DateTime.fromISO(saleDate).toLocaleString();
+    const formattedPrice = `$${formatNumberWithThousandSeparator(`${props.price}`)}`;
     const isSelected = props.selectedEquipmentSet.has(props.id);
     const variableDetail = getVariableDetail(props);
     const variableDetailStyle = variableDetail.length >= 18 ? { fontSize: 14 } : {};
@@ -29,9 +31,34 @@ const EquipmentCard = (props) => {
         props.handleEquipmentSelected();
         event.stopPropagation();
     };
+    function getTextWidth(text, font) {
+        const [count, setCount] = useState(0);
+        useEffect(() => {
+            const canvas = canvasRef.current;
+            const context = canvas.getContext('2d');
+            context.font = font || getComputedStyle(document.body).font;
+            setCount(context.measureText(text).width);
+        });
+        return count;
+    }
+    const formatLongVariableDetails = (variableDetail) => {
+        return variableDetail.split('/').map((detail) => (
+            <Typography className={classes.variableDetail} style={variableDetailStyle}>
+                {detail}
+            </Typography>
+        ));
+    };
+    const formatShortVariableDetails = (variableDetail) => {
+        return (
+            <Typography className={classes.variableDetail} style={variableDetailStyle}>
+                {variableDetail}
+            </Typography>
+        );
+    };
 
     return (
         <div className={classes.cardHolder}>
+            <canvas className={classes.canvas} ref={canvasRef}></canvas>
             <Card
                 className={clsx(classes.root, {
                     [classes.selectedCard]: isSelected,
@@ -71,15 +98,13 @@ const EquipmentCard = (props) => {
                             {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
                         </Typography>
                         <div className={classes.details}>
-                            <Typography
-                                className={classes.variableDetail}
-                                data-cy='equipment-card-variable-detail'
-                                style={variableDetailStyle}
-                            >
-                                {variableDetail}
-                            </Typography>
+                            <div data-cy='equipment-card-variable-detail'>
+                                {getTextWidth(formattedPrice) + getTextWidth(variableDetail) <= 220
+                                    ? formatShortVariableDetails(variableDetail)
+                                    : formatLongVariableDetails(variableDetail)}
+                            </div>
                             <Typography className={classes.price} data-cy='equipment-card-price'>
-                                {`$${formatNumberWithThousandSeparator(`${props.price}`)}`}
+                                {formattedPrice}
                             </Typography>
                         </div>
                         <Divider />
