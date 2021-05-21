@@ -10,12 +10,13 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import useStyles from './styles';
 
 const EquipmentCard = (props) => {
+    const canvasRef = useRef(null);
     const classes = useStyles();
     const saleDate = props.saleDate ? props.saleDate : props.auctionDate;
     const formattedDate = DateTime.fromISO(saleDate).toLocaleString();
@@ -30,6 +31,16 @@ const EquipmentCard = (props) => {
         props.handleEquipmentSelected();
         event.stopPropagation();
     };
+    function getTextWidth(text, font) {
+        const [count, setCount] = useState(0);
+        useEffect(() => {
+            const canvas = canvasRef.current;
+            const context = canvas.getContext('2d');
+            context.font = font || getComputedStyle(document.body).font;
+            setCount(context.measureText(text).width);
+        });
+        return count;
+    }
     const formatLongVariableDetails = (variableDetail) => {
         return variableDetail.split('/').map((detail) => (
             <Typography className={classes.variableDetail} style={variableDetailStyle}>
@@ -38,7 +49,6 @@ const EquipmentCard = (props) => {
         ));
     };
     const formatShortVariableDetails = (variableDetail) => {
-        console.log(variableDetail.length + formattedPrice.length);
         return (
             <Typography className={classes.variableDetail} style={variableDetailStyle}>
                 {variableDetail}
@@ -48,6 +58,7 @@ const EquipmentCard = (props) => {
 
     return (
         <div className={classes.cardHolder}>
+            <canvas className={classes.canvas} ref={canvasRef}></canvas>
             <Card
                 className={clsx(classes.root, {
                     [classes.selectedCard]: isSelected,
@@ -88,7 +99,7 @@ const EquipmentCard = (props) => {
                         </Typography>
                         <div className={classes.details}>
                             <div data-cy='equipment-card-variable-detail'>
-                                {variableDetail.length + formattedPrice.length < 33
+                                {getTextWidth(formattedPrice) + getTextWidth(variableDetail) <= 220
                                     ? formatShortVariableDetails(variableDetail)
                                     : formatLongVariableDetails(variableDetail)}
                             </div>

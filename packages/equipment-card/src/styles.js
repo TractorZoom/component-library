@@ -8,6 +8,9 @@ const iconButton = (theme) => ({
 });
 
 export default makeStyles((theme) => ({
+    canvas: {
+        display: 'none',
+    },
     cardContent: {
         padding: theme.spacing(5),
         paddingBottom: theme.spacing(2),
