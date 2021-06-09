@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.36.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/side-panel@0.35.0...@tractorzoom/side-panel@0.36.0) (2021-06-09)
+
+
+### Features
+
+* add background and text color theme to paper on mobile and desktop ([1308606](https://github.com/TractorZoom/component-library/commit/13086063d22f1fe33c9f7745ccc935b618730452))
+* overwrite paper-root in drawer component ([fada314](https://github.com/TractorZoom/component-library/commit/fada314f4ff2b2f0ec046bed98a7dfcaa4f9c67a))
+
+
+
+
+
 # [0.35.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/side-panel@0.34.1...@tractorzoom/side-panel@0.35.0) (2021-06-09)
 
 
