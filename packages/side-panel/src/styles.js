@@ -31,9 +31,15 @@ const useStyles = makeStyles((theme) => ({
         width: '100vw',
         flexShrink: 0,
     },
-    drawerPaper: paper,
+    drawerPaper: {
+        ...paper,
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.text.secondary,
+    },
     drawerPaperMobile: {
         ...paper,
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.text.secondary,
         width: '100vw',
     },
     headerDivider: {
