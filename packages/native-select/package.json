@@ -30,7 +30,7 @@
         "prepublish": "npm run build"
     },
     "peerDependencies": {
-        "@material-ui/core": "^4.10.2"
+        "@material-ui/core": "4.x.x"
     },
     "dependencies": {
         "clsx": "^1.1.1"
