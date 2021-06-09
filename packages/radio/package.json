@@ -1,6 +1,6 @@
 {
     "name": "@tractorzoom/radio",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Wrapper for Material UI's RadioGroup",
     "author": "@TractorZoom",
     "license": "MIT",

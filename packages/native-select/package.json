@@ -1,6 +1,6 @@
 {
     "name": "@tractorzoom/native-select",
-    "version": "0.32.0",
+    "version": "0.32.1",
     "description": "Native select component using Material UI's TextField",
     "author": "@TractorZoom",
     "license": "MIT",
