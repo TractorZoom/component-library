@@ -19,6 +19,7 @@ const SidePanel = (props) => {
 
     return (
         <Drawer
+            classes={{ paper: { root: classes.root } }}
             className={isMobile ? classes.drawerMobile : classes.drawer}
             anchor='left'
             open={open}

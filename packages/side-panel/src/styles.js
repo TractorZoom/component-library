@@ -33,9 +33,13 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         ...paper,
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.text.secondary,
     },
     drawerPaperMobile: {
         ...paper,
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.text.secondary,
         width: '100vw',
     },
     headerDivider: {
