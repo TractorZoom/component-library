@@ -25,6 +25,7 @@ const SidePanel = (props) => {
             variant='persistent'
             classes={{
                 paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
+                root: classes.root,
             }}
         >
             <div className={classes.drawerHeader}>
