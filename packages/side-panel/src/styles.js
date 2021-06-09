@@ -33,13 +33,9 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         ...paper,
-        backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.text.secondary,
     },
     drawerPaperMobile: {
         ...paper,
-        backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.text.secondary,
         width: '100vw',
     },
     headerDivider: {
@@ -51,6 +47,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'block',
         margin: 'auto',
         marginLeft: 5,
+    },
+    root: {
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.text.secondary,
     },
     toggleOpenButton: {
         borderRadius: '0px 40px 40px 0px',
