@@ -1,6 +1,6 @@
 {
     "name": "@tractorzoom/theme",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "description": "Customized Material UI theme for Tractor Zoom",
     "author": "@TractorZoom",
     "license": "MIT",
@@ -28,7 +28,7 @@
         "prepublish": "npm run build"
     },
     "peerDependencies": {
-        "@material-ui/core": "^4.10.2"
+        "@material-ui/core": "4.x.x"
     },
     "dependencies": {
         "@fontsource/inter": "4.2.2"

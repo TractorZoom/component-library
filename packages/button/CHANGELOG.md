@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/button@1.1.0...@tractorzoom/button@1.2.0) (2021-06-09)
+
+
+### Features
+
+* add radio component ([86f860f](https://github.com/TractorZoom/component-library/commit/86f860ff6744fadc72663f725a236101b7f4d1f4))
+
+
+
+
+
 # [1.1.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/button@0.32.0...@tractorzoom/button@1.1.0) (2021-03-24)
 
 

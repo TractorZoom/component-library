@@ -10,99 +10,130 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import useStyles from './styles';
 
 const EquipmentCard = (props) => {
+    const canvasRef = useRef(null);
     const classes = useStyles();
     const saleDate = props.saleDate ? props.saleDate : props.auctionDate;
     const formattedDate = DateTime.fromISO(saleDate).toLocaleString();
+    const formattedPrice = `$${formatNumberWithThousandSeparator(`${props.price}`)}`;
     const isSelected = props.selectedEquipmentSet.has(props.id);
     const variableDetail = getVariableDetail(props);
     const variableDetailStyle = variableDetail.length >= 18 ? { fontSize: 14 } : {};
-
+    if (!props.handleOpen) {
+        props.style['pointer-events'] = 'none';
+    }
     const handleToggleSelected = (event) => {
         props.handleEquipmentSelected();
         event.stopPropagation();
     };
+    function getTextWidth(text, font) {
+        const [count, setCount] = useState(0);
+        useEffect(() => {
+            const canvas = canvasRef.current;
+            const context = canvas.getContext('2d');
+            context.font = font || getComputedStyle(document.body).font;
+            setCount(context.measureText(text).width);
+        });
+        return count;
+    }
+    const formatLongVariableDetails = (variableDetail) => {
+        return variableDetail.split('/').map((detail) => (
+            <Typography className={classes.variableDetail} style={variableDetailStyle}>
+                {detail}
+            </Typography>
+        ));
+    };
+    const formatShortVariableDetails = (variableDetail) => {
+        return (
+            <Typography className={classes.variableDetail} style={variableDetailStyle}>
+                {variableDetail}
+            </Typography>
+        );
+    };
 
     return (
-        <Card
-            className={clsx(classes.root, {
-                [classes.selectedCard]: isSelected,
-            })}
-            data-cy='equipment-card'
-            data-guid={props.id}
-            style={props.style}
-            variant='outlined'
-        >
-            <CardActionArea
-                data-tour={props.shouldHaveDataTour ? 'equipment-card-action-area' : ''}
-                onClick={props.handleOpen}
+        <div className={classes.cardHolder}>
+            <canvas className={classes.canvas} ref={canvasRef}></canvas>
+            <Card
+                className={clsx(classes.root, {
+                    [classes.selectedCard]: isSelected,
+                })}
+                data-cy='equipment-card'
+                data-guid={props.id}
+                style={props.style}
+                variant='outlined'
             >
-                <IconButton
-                    aria-label='select equipment'
-                    className={isSelected ? classes.checkedButton : classes.selectButton}
-                    color='primary'
-                    data-cy='equipment-card-toggle-selection-button'
-                    data-tour={props.shouldHaveDataTour ? 'equipment-card-select-equipment' : ''}
-                    onClick={handleToggleSelected}
-                    title={isSelected ? 'Remove from custom average' : 'Add to custom average'}
+                <CardActionArea
+                    data-tour={props.shouldHaveDataTour ? 'equipment-card-action-area' : ''}
+                    onClick={props.handleOpen}
                 >
-                    {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
-                </IconButton>
-                <CardMedia
-                    className={classes.media}
-                    component='img'
-                    data-cy='equipment-card-image'
-                    onError={(e) => {
-                        e.target.onerror = null;
+                    <CardMedia
+                        className={classes.media}
+                        component='img'
+                        data-cy='equipment-card-image'
+                        onError={(e) => {
+                            e.target.onerror = null;
 
-                        if (e.target.src === props.makeImageUrl || !props.makeImageUrl) {
-                            e.target.src = '/img/nopicture.png';
-                        } else {
-                            e.target.src = props.makeImageUrl;
-                        }
-                    }}
-                    src={props.imageUrl}
-                    title='Equipment Image'
-                />
-                <CardContent classes={{ root: classes.cardContent }}>
-                    <Typography
-                        className={classes.makeModelTitle}
-                        component='h2'
-                        data-cy='equipment-card-make-model'
-                        variant='h5'
-                    >
-                        {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
-                    </Typography>
-                    <div className={classes.details}>
+                            if (e.target.src === props.makeImageUrl || !props.makeImageUrl) {
+                                e.target.src = '/img/nopicture.png';
+                            } else {
+                                e.target.src = props.makeImageUrl;
+                            }
+                        }}
+                        src={props.imageUrl}
+                        title='Equipment Image'
+                    />
+                    <CardContent classes={{ root: classes.cardContent }}>
                         <Typography
-                            className={classes.variableDetail}
-                            data-cy='equipment-card-variable-detail'
-                            style={variableDetailStyle}
+                            className={classes.makeModelTitle}
+                            component='h2'
+                            data-cy='equipment-card-make-model'
+                            variant='h5'
                         >
-                            {variableDetail}
+                            {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
                         </Typography>
-                        <Typography className={classes.price} data-cy='equipment-card-price'>
-                            {`$${formatNumberWithThousandSeparator(`${props.price}`)}`}
-                        </Typography>
-                    </div>
-                    <Divider />
-                    <div className={classes.locationAndSaleDate}>
-                        <Typography className={classes.detailsText} data-cy='equipment-card-location'>
-                            <LocationOnIcon style={{ height: 16, marginBottom: -2, width: 16 }} />
-                            {getLocation(props)}
-                        </Typography>
-                        <Typography className={classes.detailsText} data-cy='equipment-card-sale-date'>
-                            Sold {formattedDate}
-                        </Typography>
-                    </div>
-                </CardContent>
-            </CardActionArea>
-        </Card>
+                        <div className={classes.details}>
+                            <div data-cy='equipment-card-variable-detail'>
+                                {getTextWidth(formattedPrice) + getTextWidth(variableDetail) <= 220
+                                    ? formatShortVariableDetails(variableDetail)
+                                    : formatLongVariableDetails(variableDetail)}
+                            </div>
+                            <Typography className={classes.price} data-cy='equipment-card-price'>
+                                {formattedPrice}
+                            </Typography>
+                        </div>
+                        <Divider />
+                        <div className={classes.locationAndSaleDate}>
+                            <Typography className={classes.detailsText} data-cy='equipment-card-location'>
+                                <LocationOnIcon style={{ height: 16, marginBottom: -2, width: 16 }} />
+                                {getLocation(props)}
+                            </Typography>
+                            <Typography className={classes.detailsText} data-cy='equipment-card-sale-date'>
+                                Sold {formattedDate}
+                            </Typography>
+                        </div>
+                    </CardContent>
+                </CardActionArea>
+                {!!props.handleEquipmentSelected && (
+                    <IconButton
+                        aria-label='select equipment'
+                        className={isSelected ? classes.checkedButton : classes.selectButton}
+                        color='primary'
+                        data-cy='equipment-card-toggle-selection-button'
+                        data-tour={props.shouldHaveDataTour ? 'equipment-card-select-equipment' : ''}
+                        onClick={handleToggleSelected}
+                        title={isSelected ? 'Remove from custom average' : 'Add to custom average'}
+                    >
+                        {isSelected ? <CheckRoundedIcon fontSize='large' /> : <AddRoundedIcon fontSize='large' />}
+                    </IconButton>
+                )}
+            </Card>
+        </div>
     );
 };
 
@@ -118,8 +149,8 @@ EquipmentCard.defaultProps = {
 EquipmentCard.propTypes = {
     auctionDate: PropTypes.string,
     distance: PropTypes.number,
-    handleOpen: PropTypes.func.isRequired,
-    handleEquipmentSelected: PropTypes.func.isRequired,
+    handleOpen: PropTypes.func,
+    handleEquipmentSelected: PropTypes.func,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     imageUrl: PropTypes.string.isRequired,
     make: PropTypes.string.isRequired,

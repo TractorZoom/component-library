@@ -1,6 +1,6 @@
 {
     "name": "@tractorzoom/usage-meter",
-    "version": "0.32.0",
+    "version": "0.32.1",
     "description": "Usage Meter with label",
     "author": "@TractorZoom",
     "license": "MIT",
@@ -31,7 +31,7 @@
         "prepublish": "npm run build"
     },
     "peerDependencies": {
-        "@material-ui/core": "^4.10.2"
+        "@material-ui/core": "4.x.x"
     },
     "dependencies": {
         "clsx": "^1.1.1"
