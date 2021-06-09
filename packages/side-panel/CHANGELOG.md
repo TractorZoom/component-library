@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.33.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/side-panel@0.32.0...@tractorzoom/side-panel@0.33.0) (2021-06-09)
+
+
+### Features
+
+* remove themeProvider from side panel ([ffffe28](https://github.com/TractorZoom/component-library/commit/ffffe28cb707f4e191405edc1ff2256e7cde42e2))
+
+
+
+
+
 # 0.32.0 (2021-03-22)
 
 
