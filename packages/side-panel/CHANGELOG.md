@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.35.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/side-panel@0.34.1...@tractorzoom/side-panel@0.35.0) (2021-06-09)
+
+
+### Features
+
+* get background and text color from theme for sidePanel ([b5e46a3](https://github.com/TractorZoom/component-library/commit/b5e46a31e130f0c7a5b9016e15c0b38ee0fa380a))
+
+
+
+
+
 ## [0.34.1](https://github.com/TractorZoom/component-library/compare/@tractorzoom/side-panel@0.34.0...@tractorzoom/side-panel@0.34.1) (2021-06-09)
 
 **Note:** Version bump only for package @tractorzoom/side-panel
