@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
+import useStyles from './styles';
 import withWidth from '@material-ui/core/withWidth';
 
 const darkTheme = createMuiTheme({
@@ -17,6 +18,11 @@ const darkTheme = createMuiTheme({
 const SidePanel = (props) => {
     const { open, setOpen } = props;
     const isMobile = props.width === 'xs' || props.width === 'sm';
+    const classes = useStyles();
+    useEffect(() => {
+        setOpen(!isMobile);
+    }, []);
+
     return (
         <ThemeProvider
             theme={(theme) =>
