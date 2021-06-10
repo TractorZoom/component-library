@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/side-panel@0.36.0...@tractorzoom/side-panel@0.37.0) (2021-06-10)
+
+
+### Features
+
+* readd themeProvider and update with new color theme ([42e76c5](https://github.com/TractorZoom/component-library/commit/42e76c58808138ffe1f9cb56714e1ac8f59fdbb6))
+* readd useEffect for mobile and import to useStyles ([5b15160](https://github.com/TractorZoom/component-library/commit/5b151606adb55ad50aa8fb5a4c23b9cf96c02a19))
+
+
+
+
+
 # [0.36.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/side-panel@0.35.0...@tractorzoom/side-panel@0.36.0) (2021-06-09)
 
 
