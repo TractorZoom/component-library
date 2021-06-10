@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     input: {
-        backgroundColor: 'rgba(0, 0, 0, 0.05) !important',
+        backgroundColor: `${theme.palette.action.active} !important`,
         border: `2px solid transparent`,
         borderRadius: 8,
         '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.08) !important',
+            backgroundColor: `${theme.palette.action.hover} !important`,
         },
     },
     nativeInput: {

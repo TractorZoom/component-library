@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BasicDialog from '../packages/basic-dialog/src/index';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useDarkMode } from '../packages/theme/src/theme';
 
 export default () => {
     const [isCustomHeaderOpen, setIsCustomHeaderOpen] = useState(false);
@@ -25,7 +26,13 @@ export default () => {
                 </Button>,
             ]}
             close={closeDialog(setIsCustomHeaderOpen)}
-            headerComponent={<img src='/iron-comps-powered-by-tractor-zoom_rectangle.svg' style={{ height: 25 }} />}
+            headerComponent={
+                useDarkMode() ? (
+                    <img src='/iron-comps-powered-by-tractor-zoom-black.png' style={{ height: 25 }} />
+                ) : (
+                    <img src='/iron-comps-powered-by-tractor-zoom_rectangle.svg' style={{ height: 25 }} />
+                )
+            }
             isOpen={isCustomHeaderOpen}
         >
             <Typography>Dialog content is passed in as children</Typography>

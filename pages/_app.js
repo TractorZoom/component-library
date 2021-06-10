@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { ironComps } from '../packages/theme/src/index';
 import '../styles.css';
+import { useDarkMode } from '../packages/theme/src/theme';
 
 function loadScript(src, position, id) {
     if (!position) {
@@ -32,6 +33,9 @@ function App({ Component, pageProps }) {
         loaded.current = true;
     }
 
+    const isDarkMode = useDarkMode();
+    const theme = React.useMemo(() => ironComps(isDarkMode), [isDarkMode]);
+
     React.useEffect(() => {
         const jssStyles = document.querySelector('#jss-server-side');
         if (jssStyles) {
@@ -40,7 +44,7 @@ function App({ Component, pageProps }) {
     }, []);
 
     return (
-        <ThemeProvider theme={ironComps}>
+        <ThemeProvider theme={theme}>
             <CssBaseline />
             <Component {...pageProps} />
         </ThemeProvider>
