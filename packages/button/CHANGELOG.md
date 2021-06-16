@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/button@1.2.0...@tractorzoom/button@1.3.0) (2021-06-16)
+
+
+### Features
+
+* adding new theme and exporting new buttons ([69228d9](https://github.com/TractorZoom/component-library/commit/69228d9f67bd5b1e85d9e2877388a9811457ee09))
+
+
+
+
+
 # [1.2.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/button@1.1.0...@tractorzoom/button@1.2.0) (2021-06-09)
 
 
