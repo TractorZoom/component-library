@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { ironComps } from '../packages/theme/src/index';
+import { ironComps, tractorZoom } from '../packages/theme/src/index';
 import '../styles.css';
 
 function loadScript(src, position, id) {
@@ -39,8 +39,25 @@ function App({ Component, pageProps }) {
         }
     }, []);
 
+    const [theme, setTheme] = useState(tractorZoom);
+    const changeTheme = (props) => {
+        const targetTheme = props.target.value;
+
+        if (targetTheme === 'tractorZoom') {
+            setTheme(tractorZoom);
+        } else if (targetTheme === 'ironComps') {
+            setTheme(ironComps);
+        }
+    };
     return (
-        <ThemeProvider theme={ironComps}>
+        <ThemeProvider theme={theme}>
+            <label>
+                {'Choose Theme: '}
+                <select onChange={changeTheme}>
+                    <option value={'tractorZoom'}>Tractor Zoom</option>
+                    <option value={'ironComps'}>Iron Comps</option>
+                </select>
+            </label>
             <CssBaseline />
             <Component {...pageProps} />
         </ThemeProvider>

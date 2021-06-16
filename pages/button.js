@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../packages/button/src/index';
+import Button, { PrimaryButton, OutlineButton, TextButton } from '../packages/button/src/index';
 import SaveIcon from '@material-ui/icons/Save';
 import Typography from '@material-ui/core/Typography';
 
@@ -22,27 +22,21 @@ const ButtonExamples = () => {
             </Typography>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <Button style={buttonStyles}>Default</Button>
-                <Button color='primary' style={buttonStyles}>
-                    Primary
-                </Button>
+                <PrimaryButton style={buttonStyles}>Primary</PrimaryButton>
                 <Button disabled style={buttonStyles}>
                     Disabled
                 </Button>
                 <Button loading style={buttonStyles}>
                     Loading
                 </Button>
-                <Button variant='outlined' style={buttonStyles}>
-                    Outlined
-                </Button>
+                <OutlineButton style={buttonStyles}>Outlined</OutlineButton>
                 <Button color='primary' variant='outlined' style={buttonStyles}>
                     Primary Outlined
                 </Button>
                 <Button variant='text' style={buttonStyles}>
                     Text
                 </Button>
-                <Button color='primary' variant='text' style={buttonStyles}>
-                    Primary Text
-                </Button>
+                <TextButton style={buttonStyles}>Primary Text</TextButton>
                 <Button startIcon={<SaveIcon />} style={buttonStyles}>
                     Button With Start Icon
                 </Button>

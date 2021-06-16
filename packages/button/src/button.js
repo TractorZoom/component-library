@@ -29,4 +29,8 @@ Button.propTypes = {
     variant: PropTypes.string,
 };
 
+export const PrimaryButton = (props) => <Button color='primary' {...props} />;
+export const OutlineButton = (props) => <Button variant='outlined' {...props} />;
+export const TextButton = (props) => <Button variant='text' color='primary' {...props} />;
+
 export default Button;
