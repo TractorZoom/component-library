@@ -56,7 +56,8 @@
         "react": "16.14.0",
         "react-dom": "16.14.0",
         "react-test-renderer": "16.14.0",
-        "storybook-host": "5.2.0"
+        "storybook-host": "5.2.0",
+        "use-places-autocomplete": "1.9.1"
     },
     "config": {
         "commitizen": {
