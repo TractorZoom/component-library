@@ -2,7 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const IC_BLACK = '#202020';
 
-const Theme = createMuiTheme({
+const IronCompsTheme = createMuiTheme({
     palette: {
         common: {
             black: IC_BLACK,
@@ -33,4 +33,4 @@ const Theme = createMuiTheme({
     },
 });
 
-export default Theme;
+export default IronCompsTheme;

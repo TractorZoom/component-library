@@ -41,9 +41,6 @@ const ThemeExamples = () => {
             <Typography style={{ textAlign: 'center' }} variant='h4'>
                 @tractorzoom/theme
             </Typography>
-            <Typography style={{ marginTop: 40, textAlign: 'center' }} variant='h5'>
-                Iron Comps
-            </Typography>
             <Typography style={{ marginTop: 40, textAlign: 'center' }} variant='h6'>
                 Colors
             </Typography>
