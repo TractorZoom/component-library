@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/theme@1.3.0...@tractorzoom/theme@1.4.0) (2021-06-18)
+
+
+### Bug Fixes
+
+* actually removing shadows from tz theme ([0de53ad](https://github.com/TractorZoom/component-library/commit/0de53ad322b87c5d6bc5eb8f6d3e0bd4ff7b2776))
+
+
+### Features
+
+* more tz theme updates, redoing button page ([609531d](https://github.com/TractorZoom/component-library/commit/609531dc32cfcc516c0b2ae89b37f3dc76d1817e))
+* updating TZ theme, adding tz-logo-react to theme ([c059b9e](https://github.com/TractorZoom/component-library/commit/c059b9e70f2f3c41219dca844fe40bfb1f5269db))
+
+
+
+
+
 # [1.3.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/theme@1.2.0...@tractorzoom/theme@1.3.0) (2021-06-16)
 
 
