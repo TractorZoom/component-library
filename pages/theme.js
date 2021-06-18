@@ -1,6 +1,7 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import TractorZoomLogo from '../packages/theme/src/tractor-zoom-logo';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -20,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 const ThemeExamples = () => {
     const theme = useTheme();
     const classes = useStyles();
-
     const getSwatch = (color, title) => (
         <div className={classes.container}>
             <div className={classes.swatch} style={{ background: color }} />
@@ -67,6 +67,8 @@ const ThemeExamples = () => {
                 {getSwatch(theme.palette.text.secondary, 'Secondary')}
                 {getSwatch(theme.palette.text.disabled, 'Disabled')}
             </div>
+
+            <TractorZoomLogo height={180} width={600} color={theme.palette.primary.main} />
         </div>
     );
 };

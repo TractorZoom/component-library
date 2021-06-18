@@ -47,3 +47,11 @@ Using [Jest](https://github.com/facebook/jest) for testing. Prefer the use of Je
 ```
 npm run test
 ```
+
+### [Creating React Components of SVGs](https://react-svgr.com/)
+
+General Usage
+
+```
+    npx @svgr/cli --icon --replace-attr-values "#063855=currentColor" icon.svg
+```
