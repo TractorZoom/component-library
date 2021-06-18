@@ -1,32 +1,36 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const IC_BLACK = '#202020';
+const OxfordBlue = '#0e1c36';
+const LightOxfordBlue = '#6e7686';
+const TractorZoomBlue = '#1f6ef3';
+const BostonGreen = '#0e9566';
 
 const TractorZoomTheme = createMuiTheme({
     palette: {
         common: {
-            black: IC_BLACK,
+            black: OxfordBlue,
         },
         error: {
             main: '#c3134f',
         },
         primary: {
-            main: '#1f6df3',
+            main: TractorZoomBlue,
         },
         secondary: {
-            main: '#0f223c',
+            main: OxfordBlue,
         },
         success: {
-            main: '#008a1a',
+            main: BostonGreen,
         },
         text: {
             disabled: 'rgba(0, 0, 0, 0.25)',
-            primary: IC_BLACK,
-            secondary: '#818181',
+            primary: OxfordBlue,
+            secondary: LightOxfordBlue,
         },
         contrastThreshold: 3,
         tonalOffset: 0.2,
     },
+    shadows: ['none'],
     spacing: 4,
     typography: {
         fontFamily: ['Inter', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),

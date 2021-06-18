@@ -20,28 +20,58 @@ const ButtonExamples = () => {
             <Typography style={{ textAlign: 'center' }} variant='h4'>
                 @tractorzoom/button
             </Typography>
+            <Typography style={{ textAlign: 'center' }} variant='h4'>
+                Primary Button
+            </Typography>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                <Button style={buttonStyles}>Default</Button>
                 <PrimaryButton style={buttonStyles}>Primary</PrimaryButton>
-                <Button disabled style={buttonStyles}>
+                <PrimaryButton disabled style={buttonStyles}>
                     Disabled
-                </Button>
-                <Button loading style={buttonStyles}>
+                </PrimaryButton>
+                <PrimaryButton loading style={buttonStyles}>
                     Loading
-                </Button>
+                </PrimaryButton>
+            </div>
+
+            <Typography style={{ textAlign: 'center' }} variant='h4'>
+                Secondary Button
+            </Typography>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <OutlineButton style={buttonStyles}>Outlined</OutlineButton>
-                <Button color='primary' variant='outlined' style={buttonStyles}>
-                    Primary Outlined
-                </Button>
+                <OutlineButton disabled style={buttonStyles}>
+                    Outlined Disabled
+                </OutlineButton>
+                <OutlineButton loading style={buttonStyles}>
+                    Outlined Loading
+                </OutlineButton>
+            </div>
+            <Typography style={{ textAlign: 'center' }} variant='h4'>
+                Tertiary Button
+            </Typography>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <Button variant='text' style={buttonStyles}>
                     Text
                 </Button>
-                <TextButton style={buttonStyles}>Primary Text</TextButton>
+                <Button variant='text' disabled style={buttonStyles}>
+                    Text Disabled
+                </Button>
+                <Button variant='text' loading style={buttonStyles}>
+                    Text Loading
+                </Button>
+            </div>
+            <Typography style={{ textAlign: 'center' }} variant='h4'>
+                Misc Button
+            </Typography>
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <Button style={buttonStyles}>No Styles</Button>
+                <Button disabled style={buttonStyles}>
+                    No Styles Disabled
+                </Button>
+                <Button loading style={buttonStyles}>
+                    No Styles Loading
+                </Button>
                 <Button startIcon={<SaveIcon />} style={buttonStyles}>
                     Button With Start Icon
-                </Button>
-                <Button loading startIcon={<SaveIcon />} style={buttonStyles}>
-                    Loading Button With Start Icon
                 </Button>
                 <Button fullWidth style={buttonStyles}>
                     Full Width
