@@ -42,6 +42,10 @@ const ThemeExamples = () => {
                 @tractorzoom/theme
             </Typography>
             <Typography style={{ marginTop: 40, textAlign: 'center' }} variant='h6'>
+                Tractor Zoom Logo
+            </Typography>
+            <TractorZoomLogo height={180} width={600} color={theme.palette.primary.main} />
+            <Typography style={{ marginTop: 40, textAlign: 'center' }} variant='h6'>
                 Colors
             </Typography>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -67,8 +71,6 @@ const ThemeExamples = () => {
                 {getSwatch(theme.palette.text.secondary, 'Secondary')}
                 {getSwatch(theme.palette.text.disabled, 'Disabled')}
             </div>
-
-            <TractorZoomLogo height={180} width={600} color={theme.palette.primary.main} />
         </div>
     );
 };

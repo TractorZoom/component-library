@@ -30,6 +30,7 @@ const TractorZoomTheme = createMuiTheme({
         contrastThreshold: 3,
         tonalOffset: 0.2,
     },
+    shadows: 'none',
     spacing: 4,
     typography: {
         fontFamily: ['Inter', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
