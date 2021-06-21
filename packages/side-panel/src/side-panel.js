@@ -8,44 +8,64 @@ import PropTypes from 'prop-types';
 import useStyles from './styles';
 import withWidth from '@material-ui/core/withWidth';
 
+const darkTheme = createMuiTheme({
+    palette: {
+        background: { default: '#0F223C', paper: '#0F223C' },
+        type: 'dark',
+    },
+});
+
 const SidePanel = (props) => {
     const { open, setOpen } = props;
     const isMobile = props.width === 'xs' || props.width === 'sm';
     const classes = useStyles();
-
     useEffect(() => {
         setOpen(!isMobile);
     }, []);
 
     return (
-        <Drawer
-            className={isMobile ? classes.drawerMobile : classes.drawer}
-            anchor='left'
-            open={open}
-            variant='persistent'
-            classes={{
-                paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
-                root: classes.root,
-            }}
+        <ThemeProvider
+            theme={(theme) =>
+                createMuiTheme({
+                    ...theme,
+                    palette: {
+                        ...theme.palette,
+                        background: darkTheme.palette.background,
+                        divider: darkTheme.palette.divider,
+                        text: darkTheme.palette.text,
+                        type: darkTheme.palette.type,
+                    },
+                })
+            }
         >
-            <div className={classes.drawerHeader}>
-                {Boolean(props.headerComponent) && props.headerComponent}
-                <IconButton className={classes.closeButton} onClick={() => setOpen(false)}>
-                    <ChevronLeftIcon style={{ color: 'white' }} />
-                </IconButton>
-            </div>
-            <Divider className={classes.headerDivider} />
-            {props.children.map((child) => {
-                let newChild = { ...child };
+            <Drawer
+                className={isMobile ? classes.drawerMobile : classes.drawer}
+                anchor='left'
+                open={open}
+                variant='persistent'
+                classes={{
+                    paper: isMobile ? classes.drawerPaperMobile : classes.drawerPaper,
+                }}
+            >
+                <div className={classes.drawerHeader}>
+                    {Boolean(props.headerComponent) && props.headerComponent}
+                    <IconButton className={classes.closeButton} onClick={() => setOpen(false)}>
+                        <ChevronLeftIcon style={{ color: 'white' }} />
+                    </IconButton>
+                </div>
+                <Divider className={classes.headerDivider} />
+                {props.children.map((child) => {
+                    let newChild = { ...child };
 
-                newChild.props = {
-                    ...newChild.props,
-                    setOpen: setOpen,
-                    isOpen: open,
-                };
-                return newChild;
-            })}
-        </Drawer>
+                    newChild.props = {
+                        ...newChild.props,
+                        setOpen: setOpen,
+                        isOpen: open,
+                    };
+                    return newChild;
+                })}
+            </Drawer>
+        </ThemeProvider>
     );
 };
 

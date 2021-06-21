@@ -1,3 +1,4 @@
 module.exports = {
-    ironComps: require('./theme').default,
+    ironComps: require('./iron-comps-theme').default,
+    tractorZoom: require('./tractor-zoom-theme').default,
 };
