@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/TractorZoom/component-library/compare/@tractorzoom/theme@1.4.0...@tractorzoom/theme@1.4.1) (2021-06-28)
+
+
+### Bug Fixes
+
+* adding logo to export ([56af85e](https://github.com/TractorZoom/component-library/commit/56af85e47d33930de5432f3dca34929964320207))
+
+
+
+
+
 # [1.4.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/theme@1.3.0...@tractorzoom/theme@1.4.0) (2021-06-18)
 
 
