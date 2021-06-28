@@ -1,7 +1,7 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import TractorZoomLogo from '../packages/theme/src/tractor-zoom-logo';
+import { TractorZoomLogo } from '../packages/theme/src';
 
 const useStyles = makeStyles((theme) => ({
     container: {
