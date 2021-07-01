@@ -159,7 +159,7 @@ const TRACTOR = {
     makeName: 115,
     model: '4020',
     modelId: 4742,
-    price: 8750,
+    distance: 151,
     rearPTO: '1',
     serial: '177264R',
     state: 'MI',
