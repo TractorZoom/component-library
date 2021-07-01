@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/TractorZoom/component-library/compare/@tractorzoom/theme@1.4.1...@tractorzoom/theme@1.4.2) (2021-07-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @fontsource/inter to v4.4.5 ([d4873a3](https://github.com/TractorZoom/component-library/commit/d4873a385dfe8e8dfcd63521523db4af9211c6c9))
+
+
+
+
+
 ## [1.4.1](https://github.com/TractorZoom/component-library/compare/@tractorzoom/theme@1.4.0...@tractorzoom/theme@1.4.1) (2021-06-28)
 
 
