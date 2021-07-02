@@ -186,6 +186,7 @@ const EquipmentCardExamples = () => {
     const handleOpen = (equipment) => () => {
         alert(`${equipment.make} ${equipment.model} Card Clicked`);
     };
+    const equipment = LIST_OF_EQUIPMENT[4];
 
     return (
         <div
@@ -210,6 +211,12 @@ const EquipmentCardExamples = () => {
                         {...equipment}
                     />
                 ))}
+                <EquipmentCard
+                    key={equipment.id}
+                    selectedEquipmentSet={selectedEquipmentSet}
+                    style={{ margin: 5, maxWidth: 300 }}
+                    {...equipment}
+                />
             </div>
         </div>
     );

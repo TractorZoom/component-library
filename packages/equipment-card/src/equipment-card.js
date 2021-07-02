@@ -35,8 +35,9 @@ const EquipmentCard = (props) => {
 
     const attr = getTopAttributesForCategory(props.category);
 
+    let styles = props.style;
     if (!props.handleOpen) {
-        props.style['pointer-events'] = 'none';
+        styles = { ...styles, pointerEvents: 'none' };
     }
     const handleToggleSelected = (event) => {
         props.handleEquipmentSelected();
@@ -75,7 +76,7 @@ const EquipmentCard = (props) => {
                 })}
                 data-cy='equipment-card'
                 data-guid={props.id}
-                style={props.style}
+                style={styles}
                 variant='outlined'
             >
                 <CardActionArea
