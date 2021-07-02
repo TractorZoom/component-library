@@ -211,12 +211,7 @@ const EquipmentCardExamples = () => {
                         {...equipment}
                     />
                 ))}
-                <EquipmentCard
-                    key={equipment.id}
-                    selectedEquipmentSet={selectedEquipmentSet}
-                    style={{ margin: 5, maxWidth: 300 }}
-                    {...equipment}
-                />
+                <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} {...equipment} />
             </div>
         </div>
     );

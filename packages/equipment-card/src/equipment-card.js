@@ -31,7 +31,7 @@ const EquipmentCard = (props) => {
     const auctionDate = DateTime.fromISO(saleDate);
     const formattedAuctionDate = auctionDate.toFormat('MMM d');
     const formattedPrice = `$${formatNumberWithThousandSeparator(`${props.price}`)}`;
-    const isSelected = props.selectedEquipmentSet.has(props.id);
+    const isSelected = props.selectedEquipmentSet && props.selectedEquipmentSet.has(props.id);
 
     const attr = getTopAttributesForCategory(props.category);
 
@@ -197,9 +197,9 @@ EquipmentCard.propTypes = {
     make: PropTypes.string.isRequired,
     makeImageUrl: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    price: PropTypes.number,
     saleDate: PropTypes.string,
-    selectedEquipmentSet: PropTypes.object.isRequired,
+    selectedEquipmentSet: PropTypes.object,
     shouldHaveDataTour: PropTypes.bool,
     state: PropTypes.string,
     style: PropTypes.object,
