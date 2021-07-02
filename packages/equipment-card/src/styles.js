@@ -87,7 +87,7 @@ export default makeStyles((theme) => ({
         },
     },
     secondaryDetail: {
-        color: '#0E1C3699',
+        color: theme.palette.text.secondary,
         fontSize: 14,
         fontWeight: 500,
         paddingBottom: 10,
