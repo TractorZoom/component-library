@@ -54,6 +54,17 @@ const EquipmentCard = (props) => {
 
         return name;
     };
+    const getImageUrl = (url) => {
+        if (url) {
+            if (url.indexOf('http') >= 0) {
+                return url;
+            }
+
+            return `https://tz-prod.s3.amazonaws.com/${url}`;
+        }
+
+        return '';
+    };
 
     return (
         <div className={classes.cardHolder}>
@@ -72,19 +83,26 @@ const EquipmentCard = (props) => {
                     onClick={props.handleOpen}
                 >
                     <CardMedia
+                        alt='Equipment Image'
                         className={classes.media}
                         component='img'
                         data-cy='equipment-card-image'
                         onError={(e) => {
                             e.target.onerror = null;
 
-                            if (e.target.src === props.makeImageUrl || !props.makeImageUrl) {
+                            if (e.target.src === getImageUrl(props.makeImageUrl) || !props.makeImageUrl) {
                                 e.target.src = '/img/nopicture.png';
                             } else {
-                                e.target.src = props.makeImageUrl;
+                                e.target.src = getImageUrl(props.makeImageUrl);
                             }
                         }}
-                        src={props.imageUrl}
+                        src={
+                            props.imageUrl
+                                ? getImageUrl(props.imageUrl)
+                                : props.makeImageUrl
+                                ? getImageUrl(props.makeImageUrl)
+                                : '/img/nopicture.png'
+                        }
                         title='Equipment Image'
                     />
                     <CardContent classes={{ root: classes.cardContent }}>
