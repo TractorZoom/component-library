@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@2.0.0...@tractorzoom/equipment-card@2.0.1) (2021-07-02)
+
+
+### Bug Fixes
+
+* remove required props ([78b7df4](https://github.com/TractorZoom/component-library/commit/78b7df4e431bf8ee981f592ab7f52aad0d45bcf3))
+
+
+
+
+
 # [2.0.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.4.1...@tractorzoom/equipment-card@2.0.0) (2021-07-02)
 
 
