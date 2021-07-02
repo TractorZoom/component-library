@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.4.1...@tractorzoom/equipment-card@2.0.0) (2021-07-02)
+
+
+### breaking
+
+* large UI changes to equipment card ([#222](https://github.com/TractorZoom/component-library/issues/222)) ([3c0a79b](https://github.com/TractorZoom/component-library/commit/3c0a79b98a8d2c33e5b0a0f61d331f19dc509647))
+
+
+### BREAKING CHANGES
+
+* Card will look much different
+
+* fix: add short url image resolver
+
+* fix: setting readonly prop error
+
+* chore: update style theme reference
+
+
+
+
+
 ## [1.4.1](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@1.4.0...@tractorzoom/equipment-card@1.4.1) (2021-06-09)
 
 **Note:** Version bump only for package @tractorzoom/equipment-card
