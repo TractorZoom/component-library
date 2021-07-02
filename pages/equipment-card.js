@@ -83,7 +83,7 @@ const HARVESTING = {
     drive: '4WD',
     hours: 1019,
     id: 661217,
-    imageUrl: 'https://tz-prod.s3.amazonaws.com/images/lots/f61667fa-ef74-4553-963c-4bbb1a042e0d-0',
+    imageUrl: 'https://tz-prod.s3.amazonaws.com/images/lots/f61667fa-ef74-4553-963c-4bbb1a',
     latitude: 39.4698342,
     longitude: -92.0562374,
     make: 'John Deere',
@@ -115,7 +115,6 @@ const PLANTER = {
     category: 'Planting',
     city: 'West Point',
     id: 548835,
-    imageUrl: 'https://tz-prod.s3.amazonaws.com/images/lots/aa77c7f6-c044-4752-96eb-10959fd332a9-0',
     latitude: 41.8416659,
     longitude: -96.7086432,
     make: 'Case IH',
@@ -151,7 +150,7 @@ const TRACTOR = {
     horsepower: 101,
     hours: 5693,
     id: 688496,
-    imageUrl: 'https://tz-prod.s3.amazonaws.com/images/lots/7809298c-1e7f-4f98-a547-d5a4930ef55c-0',
+    imageUrl: 'images/lots/7809298c-1e7f-4f98-a547-d5a4930ef55c-0',
     latitude: 42.0853204,
     longitude: -83.6824384,
     make: 'John Deere',
@@ -159,7 +158,7 @@ const TRACTOR = {
     makeName: 115,
     model: '4020',
     modelId: 4742,
-    price: 8750,
+    distance: 151,
     rearPTO: '1',
     serial: '177264R',
     state: 'MI',
@@ -187,6 +186,7 @@ const EquipmentCardExamples = () => {
     const handleOpen = (equipment) => () => {
         alert(`${equipment.make} ${equipment.model} Card Clicked`);
     };
+    const equipment = LIST_OF_EQUIPMENT[4];
 
     return (
         <div
@@ -211,6 +211,12 @@ const EquipmentCardExamples = () => {
                         {...equipment}
                     />
                 ))}
+                <EquipmentCard
+                    key={equipment.id}
+                    selectedEquipmentSet={selectedEquipmentSet}
+                    style={{ margin: 5, maxWidth: 300 }}
+                    {...equipment}
+                />
             </div>
         </div>
     );

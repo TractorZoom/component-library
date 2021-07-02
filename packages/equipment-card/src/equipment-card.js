@@ -1,5 +1,10 @@
-import { formatNumberWithThousandSeparator, getLocation, getVariableDetail } from '@tractorzoom/equipment-attributes';
+import {
+    formatNumberWithThousandSeparator,
+    getLocation,
+    getTopAttributesForCategory,
+} from '@tractorzoom/equipment-attributes';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
+import { Box } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,7 +15,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import useStyles from './styles';
@@ -18,42 +23,48 @@ import useStyles from './styles';
 const EquipmentCard = (props) => {
     const canvasRef = useRef(null);
     const classes = useStyles();
+
+    const isSold = props.price > 0;
+
     const saleDate = props.saleDate ? props.saleDate : props.auctionDate;
     const formattedDate = DateTime.fromISO(saleDate).toLocaleString();
+    const auctionDate = DateTime.fromISO(saleDate);
+    const formattedAuctionDate = auctionDate.toFormat('MMM d');
     const formattedPrice = `$${formatNumberWithThousandSeparator(`${props.price}`)}`;
     const isSelected = props.selectedEquipmentSet.has(props.id);
-    const variableDetail = getVariableDetail(props);
-    const variableDetailStyle = variableDetail.length >= 18 ? { fontSize: 14 } : {};
+
+    const attr = getTopAttributesForCategory(props.category);
+
+    let styles = props.style;
     if (!props.handleOpen) {
-        props.style['pointer-events'] = 'none';
+        styles = { ...styles, pointerEvents: 'none' };
     }
     const handleToggleSelected = (event) => {
         props.handleEquipmentSelected();
         event.stopPropagation();
     };
-    function getTextWidth(text, font) {
-        const [count, setCount] = useState(0);
-        useEffect(() => {
-            const canvas = canvasRef.current;
-            const context = canvas.getContext('2d');
-            context.font = font || getComputedStyle(document.body).font;
-            setCount(context.measureText(text).width);
-        });
-        return count;
-    }
-    const formatLongVariableDetails = (variableDetail) => {
-        return variableDetail.split('/').map((detail) => (
-            <Typography className={classes.variableDetail} style={variableDetailStyle}>
-                {detail}
-            </Typography>
-        ));
+
+    const primaryDetail = !props[attr[0].name] && props[attr[1]?.name] ? attr[1] : attr[0];
+    const secondaryDetail = primaryDetail === attr[1] ? undefined : attr[1];
+    const getSecondaryText = () => {
+        let name = '\u00a0';
+
+        if (props[secondaryDetail?.name]) {
+            name = formatNumberWithThousandSeparator(props[secondaryDetail.name]) + ' ' + secondaryDetail?.shortName;
+        }
+
+        return name;
     };
-    const formatShortVariableDetails = (variableDetail) => {
-        return (
-            <Typography className={classes.variableDetail} style={variableDetailStyle}>
-                {variableDetail}
-            </Typography>
-        );
+    const getImageUrl = (url) => {
+        if (url) {
+            if (url.indexOf('http') >= 0) {
+                return url;
+            }
+
+            return `https://tz-prod.s3.amazonaws.com/${url}`;
+        }
+
+        return '';
     };
 
     return (
@@ -65,7 +76,7 @@ const EquipmentCard = (props) => {
                 })}
                 data-cy='equipment-card'
                 data-guid={props.id}
-                style={props.style}
+                style={styles}
                 variant='outlined'
             >
                 <CardActionArea
@@ -73,49 +84,79 @@ const EquipmentCard = (props) => {
                     onClick={props.handleOpen}
                 >
                     <CardMedia
+                        alt='Equipment Image'
                         className={classes.media}
                         component='img'
                         data-cy='equipment-card-image'
                         onError={(e) => {
                             e.target.onerror = null;
 
-                            if (e.target.src === props.makeImageUrl || !props.makeImageUrl) {
+                            if (e.target.src === getImageUrl(props.makeImageUrl) || !props.makeImageUrl) {
                                 e.target.src = '/img/nopicture.png';
                             } else {
-                                e.target.src = props.makeImageUrl;
+                                e.target.src = getImageUrl(props.makeImageUrl);
                             }
                         }}
-                        src={props.imageUrl}
+                        src={
+                            props.imageUrl
+                                ? getImageUrl(props.imageUrl)
+                                : props.makeImageUrl
+                                ? getImageUrl(props.makeImageUrl)
+                                : '/img/nopicture.png'
+                        }
                         title='Equipment Image'
                     />
                     <CardContent classes={{ root: classes.cardContent }}>
-                        <Typography
-                            className={classes.makeModelTitle}
-                            component='h2'
-                            data-cy='equipment-card-make-model'
-                            variant='h5'
+                        <Box
+                            display='flex'
+                            justifyContent='space-between'
+                            alignItems='center'
+                            style={{ marginBottom: 4 }}
                         >
-                            {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
-                        </Typography>
+                            <Typography
+                                className={classes.makeModelTitle}
+                                component='h2'
+                                data-cy='equipment-card-make-model'
+                                variant='h5'
+                            >
+                                {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
+                            </Typography>
+                            {!isSold && <div className={classes.lozenge}>AUCTION</div>}
+                        </Box>
+
                         <div className={classes.details}>
                             <div data-cy='equipment-card-variable-detail'>
-                                {getTextWidth(formattedPrice) + getTextWidth(variableDetail) <= 220
-                                    ? formatShortVariableDetails(variableDetail)
-                                    : formatLongVariableDetails(variableDetail)}
+                                <Typography className={classes.primaryDetail}>
+                                    {props[primaryDetail.name]
+                                        ? formatNumberWithThousandSeparator(props[primaryDetail.name])
+                                        : '---'}{' '}
+                                    {primaryDetail.shortName}
+                                </Typography>
                             </div>
                             <Typography className={classes.price} data-cy='equipment-card-price'>
-                                {formattedPrice}
+                                {isSold ? formattedPrice : formattedAuctionDate}
                             </Typography>
                         </div>
-                        <Divider />
+                        <Typography className={classes.secondaryDetail}>{getSecondaryText()}</Typography>
+                        <Divider className={classes.divider} />
                         <div className={classes.locationAndSaleDate}>
-                            <Typography className={classes.detailsText} data-cy='equipment-card-location'>
-                                <LocationOnIcon style={{ height: 16, marginBottom: -2, width: 16 }} />
-                                {getLocation(props)}
-                            </Typography>
-                            <Typography className={classes.detailsText} data-cy='equipment-card-sale-date'>
-                                Sold {formattedDate}
-                            </Typography>
+                            {isSold ? (
+                                <>
+                                    <Typography className={classes.auctionDetailsText}>
+                                        {getLocation(props, true)}
+                                    </Typography>
+                                    <Typography className={classes.auctionDetailsText} style={{ color: '#0E1C3699' }}>
+                                        Sold {formattedDate}
+                                    </Typography>
+                                </>
+                            ) : (
+                                <Box display='flex' flexDirection='column'>
+                                    <Typography className={classes.auctionDetailsText}>{props.auctioneer}</Typography>
+                                    <Typography className={classes.auctionDetailsText} style={{ color: '#0E1C3699' }}>
+                                        {getLocation(props, true)}
+                                    </Typography>
+                                </Box>
+                            )}
                         </div>
                     </CardContent>
                 </CardActionArea>

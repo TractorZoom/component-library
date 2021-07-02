@@ -8,6 +8,10 @@ const iconButton = (theme) => ({
 });
 
 export default makeStyles((theme) => ({
+    auctionDetailsText: {
+        fontSize: 10,
+        fontWeight: 600,
+    },
     canvas: {
         display: 'none',
     },
@@ -21,7 +25,7 @@ export default makeStyles((theme) => ({
     checkedButton: {
         ...iconButton(theme),
         '&:hover': {
-            backgroundColor: theme.palette.success.dark,
+            backgroundColor: theme.palette.success.main,
         },
         backgroundColor: theme.palette.success.main,
         color: theme.palette.common.white,
@@ -32,38 +36,61 @@ export default makeStyles((theme) => ({
         display: 'flex',
         fontSize: theme.spacing(4),
         justifyContent: 'space-between',
-        marginTop: theme.spacing(1),
-        paddingBottom: theme.spacing(3),
+        marginBottom: theme.spacing(-1),
     },
     detailsText: {
         color: '#4C4C4C',
         fontSize: 12,
         marginTop: theme.spacing(2),
     },
+    divider: {
+        background: '#CFD2D7',
+    },
     locationAndSaleDate: {
         display: 'flex',
         justifyContent: 'space-between',
+        marginTop: 8,
+    },
+    lozenge: {
+        paddingBottom: 2,
+        paddingTop: 2,
+        color: '#045C3E',
+        backgroundColor: '#DFFCED',
+        fontWeight: 600,
+        fontSize: 10,
+        borderRadius: 2,
+        padding: '1px 2px 1px 2px',
     },
     makeModelTitle: {
         fontSize: 14,
-        marginBottom: theme.spacing(2),
     },
     media: {
         height: 200,
     },
     price: {
-        color: theme.palette.success.dark,
+        color: theme.palette.success.main,
         fontSize: theme.spacing(4),
-        fontWeight: 'bold',
+        fontSize: 22,
+        fontWeight: 500,
+    },
+    primaryDetail: {
+        fontSize: 22,
+        fontWeight: 500,
     },
     root: {
-        border: '2px solid rgba(0, 0, 0, 0.12)',
-        borderRadius: 15,
+        border: '1px solid #CFD2D7',
+        borderRadius: 5,
         marginBottom: theme.spacing(2),
         minWidth: 275,
         '&:hover': {
             borderColor: '#BEBEBE',
         },
+    },
+    secondaryDetail: {
+        color: theme.palette.text.secondary,
+        fontSize: 14,
+        fontWeight: 500,
+        paddingBottom: 10,
     },
     selectButton: {
         ...iconButton(theme),
@@ -72,13 +99,13 @@ export default makeStyles((theme) => ({
             color: '#184EAC',
         },
         backgroundColor: theme.palette.common.white,
-        border: '2px solid rgba(0, 0, 0, 0.12)',
+        border: '1px solid #CFD2D7',
         'pointer-events': 'all',
     },
     selectedCard: {
         border: `3px solid ${theme.palette.success.main}`,
         '&:hover': {
-            borderColor: theme.palette.success.dark,
+            borderColor: theme.palette.success.main,
         },
     },
     variableDetail: {
