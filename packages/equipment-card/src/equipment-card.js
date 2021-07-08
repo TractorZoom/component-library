@@ -13,7 +13,7 @@ import CheckRoundedIcon from '@material-ui/icons/CheckRounded';
 import { DateTime } from 'luxon';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Lozenge from '@tractorzoom/lozenge';
 import PropTypes from 'prop-types';
 import React, { useRef } from 'react';
 import Typography from '@material-ui/core/Typography';
@@ -121,7 +121,11 @@ const EquipmentCard = (props) => {
                             >
                                 {`${props.year ? `${props.year} ` : ''}${props.make} ${props.model}`}
                             </Typography>
-                            {!isSold && <div className={classes.lozenge}>AUCTION</div>}
+                            {!isSold && (
+                                <Lozenge style={{ margin: 4 }} color='#045C3E' backgroundColor='#DFFCED'>
+                                    AUCTION
+                                </Lozenge>
+                            )}
                         </Box>
 
                         <div className={classes.details}>
