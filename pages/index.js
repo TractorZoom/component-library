@@ -24,6 +24,9 @@ export default () => {
             <Link href='/equipment-card'>
                 <Button variant='contained'>@tractorzoom/equipment-card</Button>
             </Link>
+            <Link href='/lozenge'>
+                <Button variant='contained'>@tractorzoom/lozenge</Button>
+            </Link>
             <Link href='/places-select'>
                 <Button variant='contained'>@tractorzoom/places-select</Button>
             </Link>
