@@ -208,7 +208,7 @@ const EquipmentCardExamples = () => {
                 @tractorzoom/equipment-card
             </Typography>
             <Grid container>
-                <Grid container item xs='9' style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <Grid container item xs={9} style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {LIST_OF_EQUIPMENT.map((equipment) => (
                         <EquipmentCard
                             handleEquipmentSelected={handleEquipmentSelected(equipment)}
@@ -222,7 +222,7 @@ const EquipmentCardExamples = () => {
                     ))}
                     <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} {...equipment} />
                 </Grid>
-                <Grid container item xs='3' style={{ textAlign: 'center' }}>
+                <Grid container item xs={3} style={{ textAlign: 'center' }}>
                     <div>
                         Viewed List
                         <ul>
