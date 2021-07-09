@@ -1,6 +1,7 @@
 import EquipmentCard from '../packages/equipment-card/src/index';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 
 const AG_TRAILERS = {
     auctionDate: '2020-04-09T18:00:00.000Z',
@@ -170,6 +171,7 @@ const LIST_OF_EQUIPMENT = [AG_TRAILERS, CHEMICAL_APPLICATORS, HARVESTING, PLANTE
 
 const EquipmentCardExamples = () => {
     const [selectedEquipmentSet, setSelectedEquipmentSet] = useState(new Set());
+    const [viewedTractors, setViewedTractors] = useState([]);
     const handleEquipmentSelected = (equipment) => () => {
         const newSelected = new Set(selectedEquipmentSet);
 
@@ -183,8 +185,13 @@ const EquipmentCardExamples = () => {
             setSelectedEquipmentSet(newSelected);
         }
     };
+
     const handleOpen = (equipment) => () => {
         alert(`${equipment.make} ${equipment.model} Card Clicked`);
+    };
+
+    const handleVisible = (tractor) => {
+        setViewedTractors([...viewedTractors, tractor]);
     };
     const equipment = LIST_OF_EQUIPMENT[4];
 
@@ -192,7 +199,7 @@ const EquipmentCardExamples = () => {
         <div
             style={{
                 margin: '40px auto',
-                maxWidth: 800,
+                maxWidth: 1200,
                 display: 'flex',
                 flexDirection: 'column',
             }}
@@ -200,19 +207,34 @@ const EquipmentCardExamples = () => {
             <Typography style={{ textAlign: 'center' }} variant='h4'>
                 @tractorzoom/equipment-card
             </Typography>
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {LIST_OF_EQUIPMENT.map((equipment) => (
-                    <EquipmentCard
-                        handleEquipmentSelected={handleEquipmentSelected(equipment)}
-                        handleOpen={handleOpen(equipment)}
-                        key={equipment.id}
-                        selectedEquipmentSet={selectedEquipmentSet}
-                        style={{ margin: 5, maxWidth: 300 }}
-                        {...equipment}
-                    />
-                ))}
-                <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} {...equipment} />
-            </div>
+            <Grid container>
+                <Grid container item xs='9' style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    {LIST_OF_EQUIPMENT.map((equipment) => (
+                        <EquipmentCard
+                            handleEquipmentSelected={handleEquipmentSelected(equipment)}
+                            handleOpen={handleOpen(equipment)}
+                            onVisible={() => handleVisible(equipment)}
+                            key={equipment.id}
+                            selectedEquipmentSet={selectedEquipmentSet}
+                            style={{ margin: 5, maxWidth: 300 }}
+                            {...equipment}
+                        />
+                    ))}
+                    <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} {...equipment} />
+                </Grid>
+                <Grid container item xs='3' style={{ textAlign: 'center' }}>
+                    <div>
+                        Viewed List
+                        <ul>
+                            {viewedTractors.map((equipment) => (
+                                <li>{`${equipment.year ? `${equipment.year} ` : ''}${equipment.make} ${
+                                    equipment.model
+                                }`}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </Grid>
+            </Grid>
         </div>
     );
 };
