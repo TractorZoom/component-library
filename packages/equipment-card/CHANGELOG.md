@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@2.0.1...@tractorzoom/equipment-card@2.1.0) (2021-07-10)
+
+
+### Features
+
+* add monorepo package ([#224](https://github.com/TractorZoom/component-library/issues/224)) ([578345f](https://github.com/TractorZoom/component-library/commit/578345f2198dfdf8b6147818d907e54afbac4cbe))
+
+
+
+
+
 ## [2.0.1](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@2.0.0...@tractorzoom/equipment-card@2.0.1) (2021-07-02)
 
 
