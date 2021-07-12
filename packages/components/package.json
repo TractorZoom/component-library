@@ -1,6 +1,6 @@
 {
     "name": "@tractorzoom/components",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Wrapper for all TractorZoom Custom Components",
     "author": "@TractorZoom",
     "license": "MIT",
@@ -44,7 +44,7 @@
         "@tractorzoom/button-dropdown": "0.32.1",
         "@tractorzoom/button-group": "0.32.3",
         "@tractorzoom/chip": "1.1.1",
-        "@tractorzoom/equipment-card": "^2.1.0",
+        "@tractorzoom/equipment-card": "^2.2.0",
         "@tractorzoom/list": "0.32.1",
         "@tractorzoom/lozenge": "1.1.0",
         "@tractorzoom/native-select": "0.32.1",
