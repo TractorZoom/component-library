@@ -25,6 +25,7 @@ Make sure you have peer dependencies installed.
 | make                    | yes      | string for make name of equipment                                      |
 | makeImageUrl            | yes      | string url used as fallback if there is an error when using `imageUrl` |
 | model                   | yes      | string for model of equipment                                          |
+| onVisible               | no       | called for the first time the card becomes 70% visible                 |
 | price                   | yes      | number for sold price of equipment                                     |
 | saleDate                | no       | string for sale date of equipment                                      |
 | selectedEquipmentSet    | yes      | Set of ids of currently selected equipment                             |

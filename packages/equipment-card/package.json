@@ -36,6 +36,7 @@
         "luxon": "^1.26.0"
     },
     "dependencies": {
+        "react-intersection-observer": "8.32.0",
         "@tractorzoom/lozenge": "1.1.0"
     }
 }

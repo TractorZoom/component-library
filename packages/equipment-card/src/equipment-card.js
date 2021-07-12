@@ -15,10 +15,11 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Lozenge from '@tractorzoom/lozenge';
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import useStyles from './styles';
+import { useInView } from 'react-intersection-observer';
 
 const EquipmentCard = (props) => {
     const canvasRef = useRef(null);
@@ -32,10 +33,20 @@ const EquipmentCard = (props) => {
     const formattedAuctionDate = auctionDate.toFormat('MMM d');
     const formattedPrice = `$${formatNumberWithThousandSeparator(`${props.price}`)}`;
     const isSelected = props.selectedEquipmentSet && props.selectedEquipmentSet.has(props.id);
-
     const attr = getTopAttributesForCategory(props.category);
-
+    const { ref, inView } = useInView({
+        threshold: 0.7,
+    });
+    const [hasBeenSeen, setHasBeenSeen] = useState(false);
     let styles = props.style;
+
+    useEffect(() => {
+        if (props.onVisible && inView && !hasBeenSeen) {
+            setHasBeenSeen(true);
+            props.onVisible(inView);
+        }
+    }, [props.onVisible, inView, hasBeenSeen]);
+
     if (!props.handleOpen) {
         styles = { ...styles, pointerEvents: 'none' };
     }
@@ -78,6 +89,7 @@ const EquipmentCard = (props) => {
                 data-guid={props.id}
                 style={styles}
                 variant='outlined'
+                ref={ref}
             >
                 <CardActionArea
                     data-tour={props.shouldHaveDataTour ? 'equipment-card-action-area' : ''}
@@ -201,6 +213,7 @@ EquipmentCard.propTypes = {
     make: PropTypes.string.isRequired,
     makeImageUrl: PropTypes.string.isRequired,
     model: PropTypes.string.isRequired,
+    onVisible: PropTypes.func,
     price: PropTypes.number,
     saleDate: PropTypes.string,
     selectedEquipmentSet: PropTypes.object,
