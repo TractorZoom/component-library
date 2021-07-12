@@ -51,16 +51,6 @@ export default makeStyles((theme) => ({
         justifyContent: 'space-between',
         marginTop: 8,
     },
-    lozenge: {
-        paddingBottom: 2,
-        paddingTop: 2,
-        color: '#045C3E',
-        backgroundColor: '#DFFCED',
-        fontWeight: 600,
-        fontSize: 10,
-        borderRadius: 2,
-        padding: '1px 2px 1px 2px',
-    },
     makeModelTitle: {
         fontSize: 14,
     },
