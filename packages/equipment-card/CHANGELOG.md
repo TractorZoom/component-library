@@ -7,20 +7,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @tractorzoom/equipment-card
 
-
-
-
-
 # [2.2.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@2.1.0...@tractorzoom/equipment-card@2.2.0) (2021-07-12)
-
 
 ### Features
 
-* add onvisible prop ([c1f686a](https://github.com/TractorZoom/component-library/commit/c1f686a263a01375a7f16e5bcf3cac011d46779c))
-
-
-
-
+-   add onvisible prop ([c1f686a](https://github.com/TractorZoom/component-library/commit/c1f686a263a01375a7f16e5bcf3cac011d46779c))
 
 # [2.1.0](https://github.com/TractorZoom/component-library/compare/@tractorzoom/equipment-card@2.0.1...@tractorzoom/equipment-card@2.1.0) (2021-07-10)
 

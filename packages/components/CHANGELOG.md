@@ -15,17 +15,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @tractorzoom/components
 
-
-
-
-
 ## [1.1.1](https://github.com/TractorZoom/component-library/compare/@tractorzoom/components@1.1.0...@tractorzoom/components@1.1.1) (2021-07-12)
 
 **Note:** Version bump only for package @tractorzoom/components
-
-
-
-
 
 # 1.1.0 (2021-07-10)
 

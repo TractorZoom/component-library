@@ -45,7 +45,7 @@ exports[`PlacesSelect should render without suggestions 1`] = `
         value=""
       />
       <div
-        className="MuiInputAdornment-root makeStyles-chevronIcon-3 MuiInputAdornment-filled MuiInputAdornment-positionEnd"
+        className="MuiInputAdornment-root makeStyles-chevronIcon-3 MuiInputAdornment-positionEnd MuiInputAdornment-filled"
       >
         <svg
           aria-hidden={true}
