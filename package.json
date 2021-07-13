@@ -40,7 +40,7 @@
         "@testing-library/jest-dom": "5.14.1",
         "@testing-library/react": "11.2.7",
         "@tractorzoom/button": "0.3.0",
-        "@tractorzoom/chance-the-wrapper": "2.1.70",
+        "@tractorzoom/chance-the-wrapper": "2.1.77",
         "@tractorzoom/commitlint-config": "0.1.2",
         "@tractorzoom/equipment-attributes": "5.5.0",
         "@tractorzoom/lozenge": "1.1.0",
