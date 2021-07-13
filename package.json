@@ -42,7 +42,7 @@
         "@tractorzoom/button": "0.3.0",
         "@tractorzoom/chance-the-wrapper": "2.1.77",
         "@tractorzoom/commitlint-config": "0.1.2",
-        "@tractorzoom/equipment-attributes": "5.5.0",
+        "@tractorzoom/equipment-attributes": "5.5.1",
         "@tractorzoom/lozenge": "1.1.0",
         "@tractorzoom/simple-select": "1.2.0",
         "autosuggest-highlight": "3.1.1",
