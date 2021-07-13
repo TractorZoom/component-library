@@ -22,6 +22,7 @@ Make sure you have peer dependencies installed.
 | handleEquipmentSelected | yes      | function that is called when equipment selection button is clicked     |
 | id                      | yes      | string or number identifier for piece of equipment                     |
 | imageUrl                | yes      | string url for image of equipment                                      |
+| loading                 | no       | render loading skeleton card                                           |
 | make                    | yes      | string for make name of equipment                                      |
 | makeImageUrl            | yes      | string url used as fallback if there is an error when using `imageUrl` |
 | model                   | yes      | string for model of equipment                                          |
