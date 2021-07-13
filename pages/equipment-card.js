@@ -2,6 +2,7 @@ import EquipmentCard from '../packages/equipment-card/src/index';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
+import Image from 'next/image';
 
 const AG_TRAILERS = {
     auctionDate: '2020-04-09T18:00:00.000Z',
@@ -210,15 +211,18 @@ const EquipmentCardExamples = () => {
             <Grid container>
                 <Grid container item xs={9} style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {LIST_OF_EQUIPMENT.map((equipment) => (
-                        <EquipmentCard
-                            handleEquipmentSelected={handleEquipmentSelected(equipment)}
-                            handleOpen={handleOpen(equipment)}
-                            onVisible={() => handleVisible(equipment)}
-                            key={equipment.id}
-                            selectedEquipmentSet={selectedEquipmentSet}
-                            style={{ margin: 5, maxWidth: 300 }}
-                            {...equipment}
-                        />
+                        <>
+                            <EquipmentCard
+                                handleEquipmentSelected={handleEquipmentSelected(equipment)}
+                                handleOpen={handleOpen(equipment)}
+                                imageComponent={Image}
+                                onVisible={() => handleVisible(equipment)}
+                                key={equipment.id}
+                                selectedEquipmentSet={selectedEquipmentSet}
+                                style={{ margin: 5, maxWidth: 300 }}
+                                {...equipment}
+                            />
+                        </>
                     ))}
                     <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} {...equipment} />
                 </Grid>

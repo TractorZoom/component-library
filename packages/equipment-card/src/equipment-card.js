@@ -24,6 +24,23 @@ import { useInView } from 'react-intersection-observer';
 const EquipmentCard = (props) => {
     const canvasRef = useRef(null);
     const classes = useStyles();
+    const getImageUrl = (url) => {
+        if (url) {
+            if (url.indexOf('http') >= 0) {
+                return url.replace('tz-prod.s3.amazonaws.com', 's3.tractorzoom.com');
+            }
+
+            return `https://s3.tractorzoom.com/${url}`;
+        }
+
+        return '';
+    };
+    const defaultImageUrl = props.imageUrl
+        ? getImageUrl(props.imageUrl)
+        : props.makeImageUrl
+        ? getImageUrl(props.makeImageUrl)
+        : '/img/nopicture.png';
+    const [imageUrl, setImageUrl] = useState(defaultImageUrl);
 
     const isSold = props.price > 0;
 
@@ -66,16 +83,27 @@ const EquipmentCard = (props) => {
 
         return name;
     };
-    const getImageUrl = (url) => {
-        if (url) {
-            if (url.indexOf('http') >= 0) {
-                return url;
-            }
 
-            return `https://tz-prod.s3.amazonaws.com/${url}`;
+    const imageError = (e) => {
+        e.target.onerror = null;
+
+        if (imageUrl === getImageUrl(props.makeImageUrl) || !props.makeImageUrl) {
+            setImageUrl('https://s3.tractorzoom.com/img/nopicture.png');
+        } else {
+            setImageUrl(getImageUrl(props.makeImageUrl));
         }
+    };
 
-        return '';
+    const NextImage = () => {
+        return (
+            <props.imageComponent
+                onError={imageError}
+                height={200}
+                width={300}
+                objectFit='cover'
+                src={imageUrl}
+            ></props.imageComponent>
+        );
     };
 
     return (
@@ -98,24 +126,10 @@ const EquipmentCard = (props) => {
                     <CardMedia
                         alt='Equipment Image'
                         className={classes.media}
-                        component='img'
+                        component={props.imageComponent ? NextImage : 'img'}
                         data-cy='equipment-card-image'
-                        onError={(e) => {
-                            e.target.onerror = null;
-
-                            if (e.target.src === getImageUrl(props.makeImageUrl) || !props.makeImageUrl) {
-                                e.target.src = '/img/nopicture.png';
-                            } else {
-                                e.target.src = getImageUrl(props.makeImageUrl);
-                            }
-                        }}
-                        src={
-                            props.imageUrl
-                                ? getImageUrl(props.imageUrl)
-                                : props.makeImageUrl
-                                ? getImageUrl(props.makeImageUrl)
-                                : '/img/nopicture.png'
-                        }
+                        onError={imageError}
+                        src={imageUrl}
                         title='Equipment Image'
                     />
                     <CardContent classes={{ root: classes.cardContent }}>
@@ -209,6 +223,7 @@ EquipmentCard.propTypes = {
     handleOpen: PropTypes.func,
     handleEquipmentSelected: PropTypes.func,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    imageComponent: PropTypes.object,
     imageUrl: PropTypes.string.isRequired,
     make: PropTypes.string.isRequired,
     makeImageUrl: PropTypes.string.isRequired,
