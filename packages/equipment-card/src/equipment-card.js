@@ -20,6 +20,7 @@ import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import useStyles from './styles';
 import { useInView } from 'react-intersection-observer';
+import EquipmentCardSkeleton from './equipment-card-skeleton';
 
 const EquipmentCard = (props) => {
     const canvasRef = useRef(null);
@@ -33,7 +34,6 @@ const EquipmentCard = (props) => {
     const formattedAuctionDate = auctionDate.toFormat('MMM d');
     const formattedPrice = `$${formatNumberWithThousandSeparator(`${props.price}`)}`;
     const isSelected = props.selectedEquipmentSet && props.selectedEquipmentSet.has(props.id);
-    const attr = getTopAttributesForCategory(props.category);
     const { ref, inView } = useInView({
         threshold: 0.7,
     });
@@ -46,6 +46,11 @@ const EquipmentCard = (props) => {
             props.onVisible(inView);
         }
     }, [props.onVisible, inView, hasBeenSeen]);
+
+    if (props.loading) {
+        return <EquipmentCardSkeleton {...props} />;
+    }
+    const attr = getTopAttributesForCategory(props.category);
 
     if (!props.handleOpen) {
         styles = { ...styles, pointerEvents: 'none' };
@@ -221,6 +226,7 @@ EquipmentCard.propTypes = {
     state: PropTypes.string,
     style: PropTypes.object,
     year: PropTypes.number,
+    loading: PropTypes.bool,
 };
 
 export default EquipmentCard;

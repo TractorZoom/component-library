@@ -220,7 +220,11 @@ const EquipmentCardExamples = () => {
                             {...equipment}
                         />
                     ))}
-                    <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} {...equipment} />
+                    <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} loading />
+                    <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} loading />
+                    <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} loading />
+                    <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} loading />
+                    <EquipmentCard key={equipment.id} style={{ margin: 5, maxWidth: 300 }} loading />
                 </Grid>
                 <Grid container item xs={3} style={{ textAlign: 'center' }}>
                     <div>
